@@ -41,7 +41,9 @@ local mods = {
     "no_flood_ban",
     "muteall",
     "rules",
-    "pre_process"
+    "pre_process",
+    "set",
+    "unset"
 }
 
 local function get_tag(plugin_tag)

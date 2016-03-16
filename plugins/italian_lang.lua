@@ -344,10 +344,15 @@ local function run(msg, matches)
         -- version.lua --
         set_text(LANG, 'version:0', 1)
         set_text(LANG, 'version:1', '#version: mostra la versione del bot.')
-
+        
         -- rules.lua --
         set_text(LANG, 'rules:0', 1)
         set_text(LANG, 'rules:1', '#rules: mostra le regole della chat.')
+
+        -- get.lua --
+        set_text(LANG, 'get:0', 2)
+        set_text(LANG, 'get:1', '#get|#getlist|sasha lista: mostra la lista delel variabili settate.')
+        set_text(LANG, 'get:2', '[#get] <var_name>: manda il testo associato a <var_name>.')
 
         if matches[1]:lower() == 'install' then
             return 'ℹ️¸ L\'italiano è stato installato come lingua del bot.'
