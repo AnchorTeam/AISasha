@@ -1,3 +1,7 @@
 res/
 data/
 .luarocks
+*.suo
+*.sln
+*.user
+*.luaproj
