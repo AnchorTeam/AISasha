@@ -35,7 +35,7 @@ return {
     },
     patterns =
     {
-        "^[!/][uU][nN][sS][eE][tT] ([^%s]+)$",
+        "^#[uU][nN][sS][eE][tT] ([^%s]+)$",
         -- unset
         "^[sS][aA][sS][hH][aA] [uU][nN][sS][eE][tT][tT][aA] ([^%s]+)$",
         "^[uU][nN][sS][eE][tT][tT][aA] ([^%s]+)$",
