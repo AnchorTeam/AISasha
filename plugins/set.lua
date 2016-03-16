@@ -20,7 +20,7 @@ local function run(msg, matches)
     local name = string.sub(matches[1]:lower(), 1, 50)
     local value = string.sub(matches[2], 1, 1000)
     local text = 'Stai forse cercando di fregarmi?'
-    if is_momod2(msg.from.id, msg.to.id) then
+    if permissions(msg.from.id, msg.to.id, "set") then
         text = set_value(msg, name, value)
     end
     return text
