@@ -354,6 +354,14 @@ local function run(msg, matches)
         set_text(LANG, 'get:1', '#get|#getlist|sasha lista: mostra la lista delel variabili settate.')
         set_text(LANG, 'get:2', '[#get] <var_name>: manda il testo associato a <var_name>.')
 
+        -- set.lua --
+        set_text(LANG, 'set:0', 1)
+        set_text(LANG, 'set:1', '#set|[sasha] setta <var_name> <text>: setta <text> in risposta a <var_name>.')
+
+        -- unset.lua --
+        set_text(LANG, 'unset:0', 1)
+        set_text(LANG, 'unset:1', '#unset|[sasha] unsetta <var_name>: elimina <var_name>.')
+
         if matches[1]:lower() == 'install' then
             return 'ℹ️¸ L\'italiano è stato installato come lingua del bot.'
         elseif matches[1]:lower() == 'update' then
