@@ -349,9 +349,9 @@ local function run(msg, matches)
         set_text(LANG, 'rules:0', 1)
         set_text(LANG, 'rules:1', '#rules: mostra le regole della chat.')
 
-        if matches[1] == 'install' then
+        if matches[1]:lower() == 'install' then
             return 'ℹ️¸ L\'italiano è stato installato come lingua del bot.'
-        elseif matches[1] == 'update' then
+        elseif matches[1]:lower() == 'update' then
             return 'ℹ️ Stringhe italiane aggiornate.'
         end
     else
@@ -362,8 +362,8 @@ end
 return {
     patterns =
     {
-        '#(install) (italian_lang)$',
-        '#(update) (italian_lang)$'
+        '#([iI][nN][sS][tT][aA][lL][lL]) (italian_lang)$',
+        '#([uU][pP][dD][aA][tT][eE]) (italian_lang)$'
     },
     run = run
 }

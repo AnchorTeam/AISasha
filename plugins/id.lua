@@ -93,7 +93,7 @@ local function run(msg, matches)
     local receiver = get_receiver(msg)
     local chat = msg.to.id
     -- Id of the user and info about group / channel
-    if matches[1] == "#id" then
+    if matches[1]:lower() == "#id" then
         if permissions(msg.from.id, msg.to.id, "id") then
             if msg.to.type == 'channel' then
                 send_msg(msg.to.peer_id, '🔠 ' .. lang_text(chat, 'supergroupName') .. ': ' .. msg.to.print_name:gsub("_", " ") .. '\n👥 ' .. lang_text(chat, 'supergroup') .. ' ID: ' .. msg.to.id .. '\n🆔 ' .. lang_text(chat, 'user') .. ' ID: ' .. msg.from.id, ok_cb, false)
@@ -101,7 +101,7 @@ local function run(msg, matches)
                 send_msg(msg.to.peer_id, '🔠 ' .. lang_text(chat, 'chatName') .. ': ' .. msg.to.print_name:gsub("_", " ") .. '\n👥 ' .. lang_text(chat, 'chat') .. ' ID: ' .. msg.to.id .. '\n🆔 ' .. lang_text(chat, 'user') .. ' ID: ' .. msg.from.id, ok_cb, false)
             end
         end
-    elseif matches[1] == 'whois' then
+    elseif matches[1]:lower() == 'whois' then
         if permissions(msg.from.id, msg.to.id, "whois") then
             chat_type = msg.to.type
             chat_id = msg.to.id
@@ -121,7 +121,7 @@ local function run(msg, matches)
         else
             return '🚫 ' .. lang_text(msg.to.id, 'require_mod')
         end
-    elseif matches[1] == 'chat' or matches[1] == 'channel' then
+    elseif matches[1]:lower() == 'chat' or matches[1]:lower() == 'channel' then
         if permissions(msg.from.id, msg.to.id, "whois") then
             local type = matches[1]
             local chanId = matches[2]
@@ -152,11 +152,11 @@ end
 return {
     patterns =
     {
-        "^#(whois)$",
-        "^#id$",
-        "^#ids? (chat)$",
-        "^#ids? (channel)$",
-        "^#(whois) (.*)$"
+        "^#([Ww][Hh][Oo][Ii][Ss])$",
+        "^#[Ii][Dd]$",
+        "^#[Ii][Dd][Ss]? ([Cc][Hh][Aa][Tt])$",
+        "^#[Ii][Dd][Ss]? ([Cc][Hh][Aa][Nn][Nn][Ee][Ll])$",
+        "^#([Ww][Hh][Oo][Ii][Ss]) (.*)$"
     },
     run = run
 }

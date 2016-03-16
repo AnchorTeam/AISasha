@@ -406,7 +406,7 @@ do
 
     local function run(msg, matches)
         chat_id = msg.to.id
-        if matches[1] == 'ban' then
+        if matches[1]:lower() == 'ban' then
             if permissions(msg.from.id, msg.to.id, "ban") then
                 local chat_id = msg.to.id
                 local chat_type = msg.to.type
@@ -437,7 +437,7 @@ do
             else
                 return '🚫 ' .. lang_text(msg.to.id, 'require_mod')
             end
-        elseif matches[1] == 'unban' then
+        elseif matches[1]:lower() == 'unban' then
             if permissions(msg.from.id, msg.to.id, "unban") then
                 local chat_id = msg.to.id
                 local chat_type = msg.to.type
@@ -466,7 +466,7 @@ do
             else
                 return '🚫 ' .. lang_text(msg.to.id, 'require_mod')
             end
-        elseif matches[1] == 'kick' then
+        elseif matches[1]:lower() == 'kick' then
             if permissions(msg.from.id, msg.to.id, "kick") then
                 local chat_id = msg.to.id
                 local chat_type = msg.to.type
@@ -493,7 +493,7 @@ do
             else
                 return '🚫 ' .. lang_text(msg.to.id, 'require_mod')
             end
-        elseif matches[1] == 'gban' then
+        elseif matches[1]:lower() == 'gban' then
             if permissions(msg.from.id, msg.to.id, "gban") then
                 chat_id = msg.to.id
                 chat_type = msg.to.type
@@ -526,7 +526,7 @@ do
             else
                 return '🚫 ' .. lang_text(msg.to.id, 'require_admin')
             end
-        elseif matches[1] == 'ungban' then
+        elseif matches[1]:lower() == 'ungban' then
             if permissions(msg.from.id, msg.to.id, "ungban") then
                 chat_id = msg.to.id
                 chat_type = msg.to.type
@@ -561,7 +561,7 @@ do
             else
                 return '🚫 ' .. lang_text(msg.to.id, 'require_mod')
             end
-        elseif matches[1] == 'add' then
+        elseif matches[1]:lower() == 'add' then
             if permissions(msg.from.id, msg.to.id, "add") then
                 local chat_id = msg.to.id
                 local chat_type = msg.to.type
@@ -588,7 +588,7 @@ do
             else
                 return '🚫 ' .. lang_text(msg.to.id, 'require_mod')
             end
-        elseif matches[1] == 'mute' then
+        elseif matches[1]:lower() == 'mute' then
             if permissions(msg.from.id, msg.to.id, "mute") then
                 if msg.reply_id then
                     get_message(msg.reply_id, mute_by_reply, false)
@@ -615,7 +615,7 @@ do
             else
                 return '🚫 ' .. lang_text(msg.to.id, 'require_mod')
             end
-        elseif matches[1] == 'unmute' then
+        elseif matches[1]:lower() == 'unmute' then
             if permissions(msg.from.id, msg.to.id, "unmute") then
                 if msg.reply_id then
                     get_message(msg.reply_id, unmute_by_reply, false)
@@ -642,7 +642,7 @@ do
             else
                 return '🚫 ' .. lang_text(msg.to.id, 'require_mod')
             end
-        elseif matches[1] == 'kickme' then
+        elseif matches[1]:lower() == 'kickme' then
             local hash = 'kickme:' .. msg.to.id
             if redis:get(hash) then
                 if msg.to.type == 'chat' then
@@ -659,23 +659,23 @@ do
     return {
         patterns =
         {
-            "^#(ban) (.*)$",
-            "^#(ban)$",
-            "^#(unban) (.*)$",
-            "^#(unban)$",
-            "^#(kick) (.*)$",
-            "^#(kick)$",
-            "^#(kickme)$",
-            "^#(add) (.*)$",
-            "^#(add)$",
-            "^#(gban) (.*)$",
-            "^#(gban)$",
-            "^#(ungban) (.*)$",
-            "^#(ungban)$",
-            '^#(mute) (.*)$',
-            '^#(mute)$',
-            '^#(unmute) (.*)$',
-            '^#(unmute)$',
+            "^#([Bb][Aa][Nn]) (.*)$",
+            "^#([Bb][Aa][Nn])$",
+            "^#([Uu][Nn][Bb][Aa][Nn]) (.*)$",
+            "^#([Uu][Nn][Bb][Aa][Nn])$",
+            "^#([Kk][Ii][Cc][Kk]) (.*)$",
+            "^#([Kk][Ii][Cc][Kk])$",
+            "^#([Kk][Ii][Cc][Kk][Mm][Ee])$",
+            "^#([Aa][Dd][Dd]) (.*)$",
+            "^#([Aa][Dd][Dd])$",
+            "^#([Gg][Bb][Aa][Nn]) (.*)$",
+            "^#([Gg][Bb][Aa][Nn])$",
+            "^#([Uu][Nn][Gg][Bb][Aa][Nn]) (.*)$",
+            "^#([Uu][Nn][Gg][Bb][Aa][Nn])$",
+            '^#([Mm][Uu][Tt][Ee]) (.*)$',
+            '^#([Mm][Uu][Tt][Ee])$',
+            '^#([Uu][Nn][Mm][Uu][Tt][Ee]) (.*)$',
+            '^#([Uu][Nn][Mm][Uu][Tt][Ee])$',
             "^!!tgservice (.*)$"
         },
         run = run,

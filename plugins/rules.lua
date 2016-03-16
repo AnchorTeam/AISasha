@@ -50,14 +50,14 @@ end
 
 local function run(msg, matches)
 
-    if matches[1] == 'rules' then
+    if matches[1]:lower() == 'rules' then
         return ret_rules_channel(msg)
-    elseif matches[1] == 'setrules' then
+    elseif matches[1]:lower() == 'setrules' then
         if permissions(msg.from.id, msg.to.id, 'rules') then
             set_rules_channel(msg, matches[2])
             return 'ℹ️ ' .. lang_text(msg.to.id, 'setRules')
         end
-    elseif matches[1] == 'remrules' then
+    elseif matches[1]:lower() == 'remrules' then
         if permissions(msg.from.id, msg.to.id, 'rules') then
             del_rules_channel(msg.to.id)
             return 'ℹ️ ' .. lang_text(msg.to.id, 'remRules')
@@ -69,9 +69,9 @@ end
 return {
     patterns =
     {
-        '^#(rules)$',
-        '^#(setrules) (.+)$',
-        '^#(remrules)$'
+        '^#([Rr][Uu][Ll][Ee][Ss])$',
+        '^#([Ss][Ee][Tt][Rr][Uu][Ll][Ee][Ss]) (.+)$',
+        '^#([Rr][Ee][Mm][Rr][Uu][Ll][Ee][Ss])$'
     },
     run = run
 }

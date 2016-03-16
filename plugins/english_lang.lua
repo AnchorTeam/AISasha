@@ -350,9 +350,9 @@ local function run(msg, matches)
         set_text(LANG, 'rules:0', 1)
         set_text(LANG, 'rules:1', '#rules: shows channel rules.')
 
-        if matches[1] == 'install' then
+        if matches[1]:lower() == 'install' then
             return 'ℹ️ English was successfully installed on your bot.'
-        elseif matches[1] == 'update' then
+        elseif matches[1]:lower() == 'update' then
             return 'ℹ️ English was successfully updated on your bot.'
         end
     else
@@ -363,8 +363,8 @@ end
 return {
     patterns =
     {
-        '#(install) (english_lang)$',
-        '#(update) (english_lang)$'
+        '#([iI][nN][sS][tT][aA][lL][lL]) (english_lang)$',
+        '#([uU][pP][dD][aA][tT][eE]) (english_lang)$'
     },
     run = run
 }
