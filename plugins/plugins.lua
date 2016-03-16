@@ -149,6 +149,13 @@ do
                 return list_plugins()
             end
 
+            -- Enable a plugin
+            if matches[1]:lower() == 'enable' then
+                local plugin_name = matches[2]
+                print("enable: " .. matches[2])
+                return enable_plugin(plugin_name)
+            end
+
             -- Re-enable a plugin for this chat
             if matches[1]:lower() == 'enable' and matches[3]:lower() == 'chat' then
                 local receiver = get_receiver(msg)
@@ -157,11 +164,10 @@ do
                 return reenable_plugin_on_chat(receiver, plugin)
             end
 
-            -- Enable a plugin
-            if matches[1]:lower() == 'enable' then
-                local plugin_name = matches[2]
-                print("enable: " .. matches[2])
-                return enable_plugin(plugin_name)
+            -- Disable a plugin
+            if matches[1]:lower() == 'disable' then
+                print("disable: " .. matches[2])
+                return disable_plugin(matches[2])
             end
 
             -- Disable a plugin on a chat
@@ -170,12 +176,6 @@ do
                 local receiver = get_receiver(msg)
                 print("disable " .. plugin .. ' on this chat')
                 return disable_plugin_on_chat(receiver, plugin)
-            end
-
-            -- Disable a plugin
-            if matches[1]:lower() == 'disable' then
-                print("disable: " .. matches[2])
-                return disable_plugin(matches[2])
             end
 
             -- Reload all the plugins!
