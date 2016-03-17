@@ -20,7 +20,7 @@
     return {
         patterns =
         {
-            "^#[Tt][Ee][Xx] (.+)$",
+            "^[#!/][Tt][Ee][Xx] (.+)$",
             -- tex
             "^[Ss][Aa][Ss][Hh][Aa] [Ee][Qq][Uu][Aa][Zz][Ii][Oo][Nn][Ee] (.+)$",
             "^[Ee][Qq][Uu][Aa][Zz][Ii][Oo][Nn][Ee] (.+)$",

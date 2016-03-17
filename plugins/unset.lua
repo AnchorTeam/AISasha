@@ -29,7 +29,7 @@ end
 return {
     patterns =
     {
-        "^#[Uu][Nn][Ss][Ee][Tt] ([^%s]+)$",
+        "^[#!/][Uu][Nn][Ss][Ee][Tt] ([^%s]+)$",
         -- unset
         "^[Ss][Aa][Ss][Hh][Aa] [Uu][Nn][Ss][Ee][Tt][Tt][Aa] ([^%s]+)$",
         "^[Uu][Nn][Ss][Ee][Tt][Tt][Aa] ([^%s]+)$",

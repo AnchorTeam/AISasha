@@ -60,10 +60,10 @@ end
 return {
     patterns =
     {
-        "^#([Gg][Ee][Tt][Ll][Ii][Ss][Tt])$",
-        "^#([Gg][Ee][Tt]) ([^%s]+)$",
+        "^[#!/]([Gg][Ee][Tt][Ll][Ii][Ss][Tt])$",
+        "^[#!/]([Gg][Ee][Tt]) ([^%s]+)$",
         -- getlist
-        "^#([Gg][Ee][Tt])$",
+        "^[#!/]([Gg][Ee][Tt])$",
         "^([Ss][Aa][Ss][Hh][Aa] [Ll][Ii][Ss][Tt][Aa])$",
         -- get
         "^([^%s]+) (.+)$",

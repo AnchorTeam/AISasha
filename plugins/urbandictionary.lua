@@ -29,9 +29,9 @@ end
 return {
     patterns =
     {
-        "^#[Uu][Rr][Bb][Aa][Nn][Dd][Ii][Cc][Tt][Ii][Oo][Nn][Aa][Rr][Yy] (.+)$",
-        "^#[Uu][Rr][Bb][Aa][Nn] (.+)$",
-        "^#[Uu][Dd] (.+)$",
+        "^[#!/][Uu][Rr][Bb][Aa][Nn][Dd][Ii][Cc][Tt][Ii][Oo][Nn][Aa][Rr][Yy] (.+)$",
+        "^[#!/][Uu][Rr][Bb][Aa][Nn] (.+)$",
+        "^[#!/][Uu][Dd] (.+)$",
         -- urban dictionary
         "^[Ss][Aa][Ss][Hh][Aa] [Uu][Rr][Bb][Aa][Nn] (.+)$",
         "^[Ss][Aa][Ss][Hh][Aa] [Uu][Dd] (.+)$",

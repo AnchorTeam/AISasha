@@ -13,9 +13,10 @@
 
 do
     local function run(msg, matches)
-        text = '#⃣ ' .. lang_text(msg.to.id, 'commandsT') .. ':\n'
         local space = '\n'
-        if matches[1]:lower() == 'commands' and not matches[2] then
+        text = '#⃣ ' .. lang_text(msg.to.id, 'commandsT') .. ':' .. space
+        text = text .. lang_text(msg.to.id, 'generalInfo:1') .. space .. lang_text(msg.to.id, 'generalInfo:2') .. space .. lang_text(msg.to.id, 'generalInfo:3') .. space .. lang_text(msg.to.id, 'generalInfo:4') .. space
+        if (matches[1]:lower() == 'commands' or matches[1]:lower() == 'help all' or matches[1]:lower() == 'sasha aiuto tutto') and not matches[2] then
             if permissions(msg.from.id, msg.to.id, "mod_commands") then
                 local langHash = 'langset:' .. msg.to.id
                 local lang = redis:get(langHash)
@@ -33,7 +34,7 @@ do
                 text = text .. lang_text(msg.to.id, 'version:1') .. '\n'
                 text = text .. lang_text(msg.to.id, 'rules:1') .. '\n'
             end
-        elseif matches[1]:lower() == 'commands' and matches[2] then
+        elseif (matches[1]:lower() == 'commands' or matches[1]:lower() == 'help' or matches[1]:lower() == 'sasha aiuto') and matches[2] then
             if permissions(msg.from.id, msg.to.id, "mod_commands") then
                 local langHash = 'langset:' .. msg.to.id
                 local lang = redis:get(langHash)
@@ -59,15 +60,14 @@ do
     return {
         patterns =
         {
-            "^#([Cc][Oo][Mm][Mm][Aa][Nn][Dd][sS])$",
-            "^#([Cc][Oo][Mm][Mm][Aa][Nn][Dd][sS]) (.+)"
+            "^[#!/]([Cc][Oo][Mm][Mm][Aa][Nn][Dd][sS])$",
+            "^[#!/]([Cc][Oo][Mm][Mm][Aa][Nn][Dd][sS]) (.+)",
+            -- commands
+            "^[#!/]([hH][eE][lL][pP] [aA][lL][lL])$",
+            "^[#!/]([hH][eE][lL][pP]) (.+)",
+            "^([sS][aA][sS][hH][aA] [aA][iI][uU][tT][oO] [tT][uU][tT][tT][oO])$",
+            "^([sS][aA][sS][hH][aA] [aA][iI][uU][tT][oO]) (.+)",
         },
         run = run
     }
-end
-
-for v, user in pairs(_gbans.gbans_users) do
-    if tonumber(user) == tonumber(user_id) then
-        return true
-    end
 end

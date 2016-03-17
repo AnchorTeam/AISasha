@@ -157,10 +157,10 @@ end
 return {
     patterns =
     {
-        "^#[Ww][Ii][Kk][Ii](%w+) ([Ss][Ee][Aa][Rr][Cc][Hh]) (.+)$",
-        "^#[Ww][Ii][Kk][Ii] ([Ss][Ee][Aa][Rr][Cc][Hh]) ?(.*)$",
-        "^#[Ww][Ii][Kk][Ii](%w+) (.+)$",
-        "^#[Ww][Ii][Kk][Ii] ?(.*)$",
+        "^[#!/][Ww][Ii][Kk][Ii](%w+) ([Ss][Ee][Aa][Rr][Cc][Hh]) (.+)$",
+        "^[#!/][Ww][Ii][Kk][Ii] ([Ss][Ee][Aa][Rr][Cc][Hh]) ?(.*)$",
+        "^[#!/][Ww][Ii][Kk][Ii](%w+) (.+)$",
+        "^[#!/][Ww][Ii][Kk][Ii] ?(.*)$",
         -- wiki
         "^[Ww][Ii][Kk][Ii](%w+) ([Ss][Ee][Aa][Rr][Cc][Hh]) (.+)$",
         "^[Ww][Ii][Kk][Ii] ([Ss][Ee][Aa][Rr][Cc][Hh]) ?(.*)$",

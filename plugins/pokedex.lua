@@ -21,7 +21,7 @@ do
         local pokemon = json:decode(b)
 
         if pokemon == nil then
-            return lang_text(receiver, 'nopoke')
+            return lang_text(receiver, 'noPoke')
         end
 
         -- api returns height and weight x10
@@ -29,10 +29,10 @@ do
         local weight = tonumber(pokemon.weight) / 10
 
         local text = 'ID Pokédex: ' .. pokemon.pkdx_id
-        .. '\n' .. lang_text(receiver, 'pokename') .. pokemon.name
-        .. '\n' .. lang_text(receiver, 'pokeweight') .. weight .. " kg"
-        .. '\n' .. lang_text(receiver, 'pokeheight') .. height .. " m"
-        .. '\n' .. lang_text(receiver, 'pokespeed') .. pokemon.speed
+        .. '\n' .. lang_text(receiver, 'pokeName') .. pokemon.name
+        .. '\n' .. lang_text(receiver, 'pokeWeight') .. weight .. " kg"
+        .. '\n' .. lang_text(receiver, 'pokeHeight') .. height .. " m"
+        .. '\n' .. lang_text(receiver, 'pokeSpeed') .. pokemon.speed
 
         local image = nil
 
@@ -61,8 +61,8 @@ do
     return {
         patterns =
         {
-            "^#[Pp][Oo][Kk][ÈèÉéEe][Dd][Ee][Xx] (.*)$",
-            "^#[Pp][Oo][Kk][ÈèÉéEe][Mm][Oo][Nn] (.+)$"
+            "^[#!/][Pp][Oo][Kk][ÈèÉéEe][Dd][Ee][Xx] (.*)$",
+            "^[#!/][Pp][Oo][Kk][ÈèÉéEe][Mm][Oo][Nn] (.+)$"
         },
         run = run
     }

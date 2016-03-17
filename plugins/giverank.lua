@@ -187,8 +187,9 @@ local function members_chat(cb_extra, success, result)
     local chat_id = cb_extra.chat_id
     local text = ""
     for k, v in pairs(result.members) do
+        text = text .. v.id
         if v.username then
-            text = text .. '@' .. v.username .. ' '
+            text = text .. ' - @' .. v.username .. '\n'
         end
     end
     return send_large_msg('chat#id' .. chat_id, text, ok_cb, true)
@@ -197,9 +198,10 @@ end
 local function members_channel(extra, success, result)
     local chat_id = extra.chat_id
     local text = ""
-    for k, user in ipairs(result) do
-        if user.username then
-            text = text .. '@' .. user.username .. ' '
+    for k, v in pairs(result) do
+        text = text .. v.id
+        if v.username then
+            text = text .. ' - @' .. v.username .. '\n'
         end
     end
     return send_large_msg('channel#id' .. chat_id, text, ok_cb, true)
@@ -242,8 +244,8 @@ end
 local function run(msg, matches)
     user_id = msg.from.id
     chat_id = msg.to.id
-    if matches[1]:lower() == 'rank' then
-        if matches[2]:lower() == 'admin' then
+    if matches[1]:lower() == 'rank' or matches[1]:lower() == 'promote' or matches[1]:lower() == 'sasha promuovi' or matches[1]:lower() == 'promuovi' then
+        if (matches[1]:lower() == 'promote' or matches[1]:lower() == 'sasha promuovi' or matches[1]:lower() == 'promuovi') and matches[2]:lower() == 'admin' then
             if permissions(user_id, chat_id, "rank_admin") then
                 if msg.reply_id then
                     get_message(msg.reply_id, admin_by_reply, false)
@@ -263,7 +265,7 @@ local function run(msg, matches)
                 return '🚫 ' .. lang_text(msg.to.id, 'require_sudo')
             end
         end
-        if matches[2]:lower() == 'mod' then
+        if (matches[1]:lower() == 'promote' or matches[1]:lower() == 'sasha promuovi' or matches[1]:lower() == 'promuovi') and matches[2]:lower() == 'mod' then
             if permissions(user_id, chat_id, "rank_mod") then
                 if msg.reply_id then
                     get_message(msg.reply_id, mod_by_reply, false)
@@ -303,7 +305,7 @@ local function run(msg, matches)
                 return '🚫 ' .. lang_text(msg.to.id, 'require_sudo')
             end
         end
-    elseif matches[1]:lower() == 'admins' then
+    elseif matches[1]:lower() == 'admins' or matches[1]:lower() == 'adminslist' or matches[1]:lower() == 'adminlist' or matches[1]:lower() == 'sasha lista admin' or matches[1]:lower() == 'lista admin' then
         if permissions(user_id, chat_id, "admins") then
             -- Check users id in config
             local text = '🔆 ' .. lang_text(msg.to.id, 'adminList') .. ':\n'
@@ -318,7 +320,7 @@ local function run(msg, matches)
         else
             return '🚫 ' .. lang_text(msg.to.id, 'require_mod')
         end
-    elseif matches[1]:lower() == 'members' then
+    elseif matches[1]:lower() == 'members' or matches[1]:lower() == 'memberslist' or matches[1]:lower() == 'memberlist' or matches[1]:lower() == 'sasha lista membri' or matches[1]:lower() == 'lista membri' then
         if permissions(user_id, chat_id, "members") then
             local chat_id = msg.to.id
             if msg.to.type == 'chat' then
@@ -331,7 +333,7 @@ local function run(msg, matches)
         else
             return '🚫 ' .. lang_text(msg.to.id, 'require_mod')
         end
-    elseif matches[1]:lower() == 'mods' then
+    elseif matches[1]:lower() == 'mods' or matches[1]:lower() == 'modslist' or matches[1]:lower() == 'modlist' or matches[1]:lower() == 'sasha lista mod' or matches[1]:lower() == 'lista mod' then
         if permissions(user_id, chat_id, "mods") then
             local chat_id = msg.to.id
             if msg.to.type == 'chat' then
@@ -352,11 +354,30 @@ end
 return {
     patterns =
     {
-        "^#([Rr][Aa][Nn][Kk]) (.*) (.*)$",
-        "^#([Rr][Aa][Nn][Kk]) (.*)$",
-        "^#([Aa][Dd][Mm][Ii][Nn][Ss])$",
-        "^#([Mm][Oo][Dd][Ss])$",
-        "^#([Mm][Ee][Mm][Bb][Ee][Rr][Ss])$"
+        "^[#!/]([Rr][Aa][Nn][Kk]) (.*) (.*)$",
+        "^[#!/]([Rr][Aa][Nn][Kk]) (.*)$",
+        "^[#!/]([Aa][Dd][Mm][Ii][Nn][Ss])$",
+        "^[#!/]([Mm][Oo][Dd][Ss])$",
+        "^[#!/]([Mm][Ee][Mm][Bb][Ee][Rr][Ss])$",
+        -- rank
+        "^[#!/]([pP][rR][oO][mM][oO][tT][eE]) (.*) (.*)$",
+        "^[#!/]([pP][rR][oO][mM][oO][tT][eE]) (.*)$",
+        "^([sS][aA][sS][hH][aA] [pP][rR][oO][mM][uU][oO][vV][iI]) (.*) (.*)$",
+        "^([sS][aA][sS][hH][aA] [pP][rR][oO][mM][uU][oO][vV][iI]) (.*)$",
+        "^([pP][rR][oO][mM][uU][oO][vV][iI]) (.*) (.*)$",
+        "^([pP][rR][oO][mM][uU][oO][vV][iI]) (.*)$",
+        -- admins
+        "^[#!/]([Aa][Dd][Mm][Ii][Nn][Ss]?[Ll][Ii][Ss][Tt])$",
+        "^([Ss][Aa][Ss][Hh][Aa] [Ll][Ii][Ss][Tt][Aa] [Aa][Dd][Mm][Ii][Nn])$",
+        "^([Ll][Ii][Ss][Tt][Aa] [Aa][Dd][Mm][Ii][Nn])$",
+        -- mods
+        "^[#!/]([Mm][Oo][Dd][Ss]?[Ll][Ii][Ss][Tt])$",
+        "^([Ss][Aa][Ss][Hh][Aa] [Ll][Ii][Ss][Tt][Aa] [Mm][Oo][Dd])$",
+        "^([Ll][Ii][Ss][Tt][Aa] [Mm][Oo][Dd])$",
+        -- members
+        "^[#!/]([Mm][Ee][Mm][Bb][Ee][Rr][Ss]?[Ll][Ii][Ss][Tt])$",
+        "^([Ss][Aa][Ss][Hh][Aa] [Ll][Ii][Ss][Tt][Aa] [Mm][Ee][Mm][Bb][Rr][Ii])$",
+        "^([Ll][Ii][Ss][Tt][Aa] [Mm][Ee][Mm][Bb][Rr][Ii])$",
     },
     run = run
 }

@@ -15,7 +15,7 @@ end
 return {
     patterns =
     {
-        "^#[Dd][Oo][Gg][Ii][Ff][Yy] (.+)$",
+        "^[#!/][Dd][Oo][Gg][Ii][Ff][Yy] (.+)$",
         -- dogify
         "^[sS][aA][sS][hH][aA] [Dd][Oo][Gg][Ee] (.+)$",
         "^[Dd][Oo][Gg][Ee] (.+)$",

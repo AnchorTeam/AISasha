@@ -817,14 +817,18 @@ do
             '^[!/#]([Mm][Uu][Tt][Ee][Aa][Ll][Ll])$',
             '^[!/#]([Mm][Uu][Tt][Ee][Aa][Ll][Ll]) (.*)$',
             '^[!/#]([Uu][Nn][Mm][Uu][Tt][Ee][Aa][Ll][Ll])$',
-            '^[!/#]([Ll][Ii][Nn][Kk])$',
+            '^[!/#]?([Ll][Ii][Nn][Kk])$',
             '^[!/#]([Nn][Ee][Ww][Ll][Ii][Nn][Kk])$',
             '^[!/#]([Tt][Oo][Ss][Uu][Pp][Ee][Rr][Gg][Rr][Oo][Uu][Pp])$',
             '^[!/#]([Ss][Ee][Tt][Dd][Ee][Ss][Cc][Rr][Ii][Pp][Tt][Ii][Oo][Nn]) (.*)$',
             '^[!/#]([Ss][Ee][Tt][Ll][Ii][Nn][Kk]) (.*)$',
             '^[!/#]([Ll][Aa][Nn][Gg]) (.*)$',
             '^[!/#]([Cc][Rr][Ee][Aa][Tt][Ee][Gg][Rr][Oo][Uu][Pp]) (.*)$',
-            '^!!tgservice (.+)$'
+            '^!!tgservice (.+)$',
+            -- setdescription
+            "^([Ss][Aa][Ss][Hh][Aa] [Ii][Mm][Pp][Oo][Ss][Tt][Aa] [Dd][Ee][Ss][Cc][Rr][Ii][Zz][Ii][Oo][Nn][Ee]) (.*)$",
+            -- setlink
+            "^([Ss][Aa][Ss][Hh][Aa] [Ii][Mm][Pp][Oo][Ss][Tt][Aa] [Ll][Ii][Nn][Kk]) (.*)$",
         },
         pre_process = pre_process,
         run = run

@@ -244,6 +244,13 @@ local function run(msg, matches)
         set_text(LANG, 'setRules', 'Regole chat aggiornate.')
         set_text(LANG, 'remRules', 'Regole chat rimosse.')
 
+        -- feedback.lua --
+        set_text(LANG, 'feedStart', '@EricSolinas hai ricevuto un feedback: #newfeedback\n\nMittente')
+        set_text(LANG, 'feedName', '\nNome: ')
+        set_text(LANG, 'feedSurname', '\nCognome: ')
+        set_text(LANG, 'feedUsername', '\nUsername: @')
+        set_text(LANG, 'feedSent', 'Feedback inviato!')
+
         -- qr.lua --
         set_text(LANG, 'opsError', 'Ops, errore.')
 
@@ -251,11 +258,11 @@ local function run(msg, matches)
         set_text(LANG, 'opsError', 'Ops, errore.')
 
         -- pokedex.lua --
-        set_text(LANG, 'nopoke', 'Nessun pokémon trovato.')
-        set_text(LANG, 'pokename', 'Nome: ')
-        set_text(LANG, 'pokeweight', 'Peso: ')
-        set_text(LANG, 'pokeheight', 'Altezza: ')
-        set_text(LANG, 'pokespeed', 'Velocità: ')
+        set_text(LANG, 'noPoke', 'Nessun pokémon trovato.')
+        set_text(LANG, 'pokeName', 'Nome: ')
+        set_text(LANG, 'pokeWeight', 'Peso: ')
+        set_text(LANG, 'pokeHeight', 'Altezza: ')
+        set_text(LANG, 'pokeSpeed', 'Velocità: ')
 
         -- urbandictionary.lua --
         set_text(LANG, 'opsError', 'Ops, errore.')
@@ -265,34 +272,38 @@ local function run(msg, matches)
         set_text(LANG, 'noResult', 'Nessun risultato trovato')
         set_text(LANG, 'opsError', 'Ops, errore.')
 
+        ------------------
+        -- General info --
+        ------------------
+        set_text(LANG, 'generalInfo:1', 'Ogni \'#\' può essere sostituito con i simboli \'!\' o \'/\'.')
+        set_text(LANG, 'generalInfo:2', 'Tutti i comandi sono Case Insensitive.')
+        set_text(LANG, 'generalInfo:3', 'Le parentesi quadre significano opzionale.')
+        set_text(LANG, 'generalInfo:4', 'Le parentesi tonde indicano una scelta evidenziata da \'|\' che significa "oppure".')
+
         ------------
         -- Usages --
         ------------
 
         -- bot.lua --
-        set_text(LANG, 'bot:0', 3)
+        set_text(LANG, 'bot:0', 2)
         set_text(LANG, 'bot:1', 'BOT')
-        set_text(LANG, 'bot:2', '#bot on: abilita il bot sul gruppo corrente.')
-        set_text(LANG, 'bot:3', '#bot off: disabilita il bot sul gruppo corrente.')
+        set_text(LANG, 'bot:2', '(#bot|sasha) on|off: abilita|disabilita il bot sul gruppo corrente.')
 
         -- commands.lua --
         set_text(LANG, 'commands:0', 3)
         set_text(LANG, 'commands:1', 'COMMANDS')
-        set_text(LANG, 'commands:2', '#commands: mostra la descrizione di ogni plugin.')
-        set_text(LANG, 'commands:3', '#commands [plugin]: descrizione del plugin.')
+        set_text(LANG, 'commands:2', '#(commands|help all)|sasha aiuto tutto: mostra la descrizione di ogni plugin.')
+        set_text(LANG, 'commands:3', '(#(commands|help)|sasha aiuto) <plugin>: descrizione di <plugin>.')
 
         -- giverank.lua --
-        set_text(LANG, 'giverank:0', 10)
+        set_text(LANG, 'giverank:0', 7)
         set_text(LANG, 'giverank:1', 'GIVE RANK')
-        set_text(LANG, 'giverank:2', '#rank admin (risposta): promuovi ad amministratore tramite risposta.')
-        set_text(LANG, 'giverank:3', '#rank admin <id_utente>/<username>: aggiungi un amministratore tramite ID/username.')
-        set_text(LANG, 'giverank:4', '#rank mod (risposta): aggiungi un moderatore tramite risposta.')
-        set_text(LANG, 'giverank:5', '#rank mod <id_utente>/<username>: aggiungi un moderatore tramite ID/Username.')
-        set_text(LANG, 'giverank:6', '#rank guest (risposta): rimuovi un amministratore tramite risposta.')
-        set_text(LANG, 'giverank:7', '#rank guest <user_id>/<user_name>: rimuovi un amministratore tramite ID/Username.')
-        set_text(LANG, 'giverank:8', '#admins: lista degli amministratori del gruppo.')
-        set_text(LANG, 'giverank:9', '#mods: lista dei moderatori del gruppo.')
-        set_text(LANG, 'giverank:10', '#members: lista dei membri della chat.')
+        set_text(LANG, 'giverank:2', '(#(rank|promote)|[sasha] promuovi) admin <id>|<username>|<reply>: promuovi ad amministratore.')
+        set_text(LANG, 'giverank:3', '(#(rank|promote)|[sasha] promuovi) mod <id>|<username>|<reply>: promuovi a moderatore.')
+        set_text(LANG, 'giverank:4', '#rank guest <id>|<username>|<reply>: togli ogni carica all\'utente.')
+        set_text(LANG, 'giverank:5', '#admin[s][list]|[sasha] lista admin: lista amministratori del gruppo.')
+        set_text(LANG, 'giverank:6', '#mod[s][list]|[sasha] lista mod: lista moderatori del gruppo.')
+        set_text(LANG, 'giverank:7', '#member[s][list]|[sasha] lista membri: lista membri del gruppo.')
 
         -- id.lua --
         set_text(LANG, 'id:0', 7)
@@ -322,37 +333,38 @@ local function run(msg, matches)
         set_text(LANG, 'moderation:14', '(#add|#invite|[sasha] invita|[sasha] resuscita) <id>|<username>|<reply>: aggiungi un utente al gruppo/supergruppo.')
 
         -- settings.lua --
-        set_text(LANG, 'settings:0', 22)
+        set_text(LANG, 'settings:0', 23)
         set_text(LANG, 'settings:1', 'SETTINGS')
-        set_text(LANG, 'settings:2', '#settings stickers enable/disable: quando abilitato, ogni sticker verrà rimosso.')
-        set_text(LANG, 'settings:3', '#settings links enable/disable: quando abilitato, ogni link verrà rimosso.')
-        set_text(LANG, 'settings:4', '#settings arabic enable/disabl: quando abilitato, ogni messaggio contenente caratteri arabi e persiani verrà rimosso.')
-        set_text(LANG, 'settings:5', '#settings bots enable/disable: quando abilitato, ogni ogni bot aggiunto verrà rimosso.')
-        set_text(LANG, 'settings:6', '#settings gifs enable/disable: quando abilitato, ogni gif verrà rimossa.')
-        set_text(LANG, 'settings:7', '#settings photos enable/disable: quando abilitato, ogni immagine verrà rimossa.')
-        set_text(LANG, 'settings:8', '#settings audios enable/disable: quando abilitato, ogni vocale verrà rimosso.')
-        set_text(LANG, 'settings:9', '#settings kickme enable/disable: quando abilitato, gli utenti possono kickarsi autonomamente.')
-        set_text(LANG, 'settings:10', '#settings spam enable/disable: quando abilitato, ogni link spam verrà rimosso.')
-        set_text(LANG, 'settings:11', '#settings setphoto enable/disable: quando abilitato, se un utente cambia icona del gruppo, il bot ripristinerà quella salvata.')
-        set_text(LANG, 'settings:12', '#settings setname enable/disable: quando abilitato, se un utente cambia il nome del gruppo, il bot ripristinerà il nome salvato.')
-        set_text(LANG, 'settings:13', '#settings lockmembers enable/disable: quando abilitato, il bot rimuoverà ogni utente che etrerà nel gruppo.')
+        set_text(LANG, 'settings:2', '#settings stickers enable|disable: quando abilitato, ogni sticker verrà rimosso.')
+        set_text(LANG, 'settings:3', '#settings links enable|disable: quando abilitato, ogni link verrà rimosso.')
+        set_text(LANG, 'settings:4', '#settings arabic enable|disable: quando abilitato, ogni messaggio contenente caratteri arabi e persiani verrà rimosso.')
+        set_text(LANG, 'settings:5', '#settings bots enable|disable: quando abilitato, ogni ogni bot aggiunto verrà rimosso.')
+        set_text(LANG, 'settings:6', '#settings gifs enable|disable: quando abilitato, ogni gif verrà rimossa.')
+        set_text(LANG, 'settings:7', '#settings photos enable|disable: quando abilitato, ogni immagine verrà rimossa.')
+        set_text(LANG, 'settings:8', '#settings audios enable|disable: quando abilitato, ogni vocale verrà rimosso.')
+        set_text(LANG, 'settings:9', '#settings kickme enable|disable: quando abilitato, gli utenti possono kickarsi autonomamente.')
+        set_text(LANG, 'settings:10', '#settings spam enable|disable: quando abilitato, ogni link spam verrà rimosso.')
+        set_text(LANG, 'settings:11', '#settings setphoto enable|disable: quando abilitato, se un utente cambia icona del gruppo, il bot ripristinerà quella salvata.')
+        set_text(LANG, 'settings:12', '#settings setname enable|disable: quando abilitato, se un utente cambia il nome del gruppo, il bot ripristinerà il nome salvato.')
+        set_text(LANG, 'settings:13', '#settings lockmembers enable|disable: quando abilitato, il bot rimuoverà ogni utente che etrerà nel gruppo.')
         set_text(LANG, 'settings:14', '#settings floodtime <secondi>: imposta l\'intervallo di monitoraggio del flood.')
         set_text(LANG, 'settings:15', '#settings maxflood <messaggi>: imposta il numero di messaggi inviati nel floodtime affinchè vengano considerati flood.')
-        set_text(LANG, 'settings:16', '#setname <nome gruppo>: vambia il nome della chat.')
-        set_text(LANG, 'settings:17', '#setphoto <poi invia la foto>: cambia la foto della chat.')
-        set_text(LANG, 'settings:18', '#lang <language (en, es...)>: cambia l\'idioma del bot.')
-        set_text(LANG, 'settings:19', '#newlink <link>: crea il link del gruppo.')
-        set_text(LANG, 'settings:20', '#setlink <link>: salva il link del gruppo.')
-        set_text(LANG, 'settings:21', '#link: mostra il link del gruppo.')
-        set_text(LANG, 'settings:22', '#rem <reply>: rimuove un messaggio.')
+        set_text(LANG, 'settings:16', '#setname <name>: cambia il nome della chat.')
+        set_text(LANG, 'settings:17', '(#setdescription|sasha imposta descrizione) <text>: cambia la descrizione del supergruppo.')
+        set_text(LANG, 'settings:18', '#setphoto <poi invia la foto>: cambia la foto della chat.')
+        set_text(LANG, 'settings:19', '#lang <language (en, es...)>: cambia l\'idioma del bot.')
+        set_text(LANG, 'settings:20', '(#newlink|sasha crea link) <link>: crea il link del gruppo.')
+        set_text(LANG, 'settings:21', '(#setlink|sasha imposta link) <link>: salva il link del gruppo.')
+        set_text(LANG, 'settings:22', '[#]link: mostra il link del gruppo.')
+        set_text(LANG, 'settings:23', '#rem <reply>: rimuove un messaggio.')
 
         -- plugins.lua --
         set_text(LANG, 'plugins:0', 5)
         set_text(LANG, 'plugins:1', 'PLUGINS')
-        set_text(LANG, 'plugins:2', '#plugins: mostra una lista di tutti i plugin.')
-        set_text(LANG, 'plugins:3', '#plugins <enable>/<disable> [plugin]: abilita/disabilita il plugin specifico.')
-        set_text(LANG, 'plugins:4', '#plugins <enable>/<disable> [plugin] chat: abilita/disabilita il plugin specifico, ma solo sulla chat corrente.')
-        set_text(LANG, 'plugins:5', '#plugins reload: ricarica tutti i plugin.')
+        set_text(LANG, 'plugins:2', '(#plugins|[sasha] lista plugins): mostra una lista di tutti i plugin.')
+        set_text(LANG, 'plugins:3', '(#[plugin[s]] enable|disable)|([sasha] abilita|attiva|disabilita|disattiva) <plugin>: abilita|disabilita il plugin specificato.')
+        set_text(LANG, 'plugins:4', '(#[plugin[s]] enable|disable)|([sasha] abilita|attiva|disabilita|disattiva) <plugin> chat: abilita|disabilita il plugin specificato solo sulla chat corrente.')
+        set_text(LANG, 'plugins:5', '(#[plugin[s]] reload)|([sasha] ricarica): ricarica tutti i plugin.')
 
         -- version.lua --
         set_text(LANG, 'version:0', 2)
@@ -360,14 +372,16 @@ local function run(msg, matches)
         set_text(LANG, 'version:2', '#version: mostra la versione del bot.')
 
         -- rules.lua --
-        set_text(LANG, 'rules:0', 2)
+        set_text(LANG, 'rules:0', 4)
         set_text(LANG, 'rules:1', 'RULES')
-        set_text(LANG, 'rules:2', '#rules: mostra le regole della chat.')
+        set_text(LANG, 'rules:2', '#rules|sasha regole: mostra le regole della chat.')
+        set_text(LANG, 'rules:3', '(#setrules|sasha imposta regole) <text>: imposta le regole della chat.')
+        set_text(LANG, 'rules:4', '#remrules|sasha rimuovi regole: rimuove le regole della chat.')
 
         -- get.lua --
         set_text(LANG, 'get:0', 3)
         set_text(LANG, 'get:1', 'GET')
-        set_text(LANG, 'get:2', '(#get|#getlist|sasha lista): mostra la lista delel variabili settate.')
+        set_text(LANG, 'get:2', '(#get|#getlist|sasha lista): mostra la lista delle variabili settate.')
         set_text(LANG, 'get:3', '[#get] <var_name>: manda il testo associato a <var_name>.')
 
         -- set.lua --

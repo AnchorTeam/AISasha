@@ -29,9 +29,8 @@ end
 return {
     patterns =
     {
-        "^#[Ss][Hh][Oo][Uu][Tt] (.*)$",
+        "^[#!/]?[Ss][Hh][Oo][Uu][Tt] (.*)$",
         -- shout
-        "^[Ss][Hh][Oo][Uu][Tt] (.*)$",
         "^[Ss][Aa][Ss][Hh][Aa] [Gg][Rr][Ii][Dd][Aa] (.*)$",
         "^[Ss][Aa][Ss][Hh][Aa] [Uu][Rr][Ll][Aa] (.*)$",
         "^[Gg][Rr][Ii][Dd][Aa] (.*)$",

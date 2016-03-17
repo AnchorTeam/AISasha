@@ -45,7 +45,7 @@ end
 return {
     patterns =
     {
-        "^#[Tt][Aa][Gg][Aa][Ll][Ll] +(.+)$",
+        "^[#!/][Tt][Aa][Gg][Aa][Ll][Ll] +(.+)$",
         "^[Ss][Aa][Ss][Hh][Aa] [Tt][Aa][Gg][Gg][Aa] [Tt][Uu][Tt][Tt][Ii] +(.+)$",
     },
     run = run

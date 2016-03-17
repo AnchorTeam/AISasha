@@ -33,7 +33,7 @@ end
 return {
     patterns =
     {
-        "^#[gG][oO][oO][gG][lL][eE] (.*)$",
+        "^[#!/][gG][oO][oO][gG][lL][eE] (.*)$",
         "^[sS][aA][sS][hH][aA] [gG][oO][oO][gG][lL][aA] (.*)$",
         "^[gG][oO][oO][gG][lL][aA] (.*)$"
     },

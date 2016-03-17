@@ -86,8 +86,8 @@ end
 return {
     patterns =
     {
-        "^#([rR][uU][lL][eE][tT][aA])$",
-        "^#([kK][iI][cC][kK] [rR][aA][nN][dD][oO][mM])$",
+        "^[#!/]([rR][uU][lL][eE][tT][aA])$",
+        "^[#!/]([kK][iI][cC][kK] [rR][aA][nN][dD][oO][mM])$",
         -- ruleta
         "([rR][uU][lL][eE][tT][aA])",
         -- kick random

@@ -20,7 +20,7 @@ do
     return {
         patterns =
         {
-            "^#[Vv][Ee][Rr][Ss][Ii][Oo][Nn]$"
+            "^[#!/][Vv][Ee][Rr][Ss][Ii][Oo][Nn]$"
         },
         run = run
     }

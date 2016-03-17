@@ -1,24 +1,24 @@
 function run(msg, matches)
-    local text = '@EricSolinas hai ricevuto un feedback: #newfeedback \n\nMittente'
+    local text = lang_text(receiver, 'feedStart')
     if msg.from.first_name then
-        text = text .. '\nNome: ' .. msg.from.first_name
+        text = text .. lang_text(receiver, 'feedName') .. msg.from.first_name
     end
     if msg.from.last_name then
-        text = text .. '\nCognome: ' .. msg.from.last_name
+        text = text .. lang_text(receiver, 'feedSurname') .. msg.from.last_name
     end
     if msg.from.username then
-        text = text .. '\nUsername: @' .. msg.from.username
+        text = text .. lang_text(receiver, 'feedUsername') .. msg.from.username
     end
     text = text .. '\nId: ' .. msg.from.id ..
     '\n\nFeedback:\n' .. matches[1]
     send_large_msg('chat#id120307338', text)
-    return 'Feedback inviato!'
+    return lang_text(receiver, 'feedSent')
 end
 
 return {
     patterns =
     {
-        "^#[Ff][Ee][Ee][Dd][Bb][Aa][Cc][Kk] (.*)$",
+        "^[#!/][Ff][Ee][Ee][Dd][Bb][Aa][Cc][Kk] (.*)$",
         "^[Ff][Ee][Ee][Dd][Bb][Aa][Cc][Kk] (.*)$"
     },
     run = run
