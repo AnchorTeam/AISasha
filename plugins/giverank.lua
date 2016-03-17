@@ -249,8 +249,7 @@ local function run(msg, matches)
             if permissions(user_id, chat_id, "rank_admin") then
                 if msg.reply_id then
                     get_message(msg.reply_id, admin_by_reply, false)
-                end
-                if is_id(matches[3]) then
+                elseif is_id(matches[3]) then
                     chat_type = msg.to.type
                     chat_id = msg.to.id
                     user_id = matches[3]
@@ -269,8 +268,7 @@ local function run(msg, matches)
             if permissions(user_id, chat_id, "rank_mod") then
                 if msg.reply_id then
                     get_message(msg.reply_id, mod_by_reply, false)
-                end
-                if is_id(matches[3]) then
+                elseif is_id(matches[3]) then
                     chat_type = msg.to.type
                     chat_id = msg.to.id
                     user_id = matches[3]
@@ -289,8 +287,7 @@ local function run(msg, matches)
             if permissions(user_id, chat_id, "rank_guest") then
                 if msg.reply_id then
                     get_message(msg.reply_id, guest_by_reply, false)
-                end
-                if is_id(matches[3]) then
+                elseif is_id(matches[3]) then
                     chat_type = msg.to.type
                     chat_id = msg.to.id
                     user_id = matches[3]
@@ -301,9 +298,9 @@ local function run(msg, matches)
                     local member = string.gsub(matches[3], '@', '')
                     resolve_username(member, guest_by_username, { chat_id = chat_id, member = member, chat_type = chat_type })
                 end
-            else
-                return '🚫 ' .. lang_text(msg.to.id, 'require_sudo')
             end
+        else
+            return '🚫 ' .. lang_text(msg.to.id, 'require_sudo')
         end
     elseif matches[1]:lower() == 'admins' or matches[1]:lower() == 'adminslist' or matches[1]:lower() == 'adminlist' or matches[1]:lower() == 'sasha lista admin' or matches[1]:lower() == 'lista admin' then
         if permissions(user_id, chat_id, "admins") then
@@ -348,8 +345,6 @@ local function run(msg, matches)
         end
     end
 end
-
-
 
 return {
     patterns =
