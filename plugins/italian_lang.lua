@@ -275,6 +275,7 @@ local function run(msg, matches)
         ------------------
         -- General info --
         ------------------
+        set_text(LANG, 'generalInfo:0', 4)
         set_text(LANG, 'generalInfo:1', 'Ogni \'#\' può essere sostituito con i simboli \'!\' o \'/\'.')
         set_text(LANG, 'generalInfo:2', 'Tutti i comandi sono Case Insensitive.')
         set_text(LANG, 'generalInfo:3', 'Le parentesi quadre significano opzionale.')
@@ -416,7 +417,7 @@ local function run(msg, matches)
         set_text(LANG, 'feedback:2', '[#]feedback: invia un feedback al creatore del bot.')
 
         -- echo.lua --
-        set_text(LANG, 'echo:0', 1)
+        set_text(LANG, 'echo:0', 2)
         set_text(LANG, 'echo:1', 'ECHO')
         set_text(LANG, 'echo:2', '(#echo|sasha ripeti) <text>: ripete <text>.')
 
@@ -468,10 +469,10 @@ local function run(msg, matches)
         set_text(LANG, 'webshot:2', '[#]|[sasha] webshot <link>: manda lo screenshot di un sito.')
 
         -- wiki.lua --
-        set_text(LANG, 'wiki:0', 2)
+        set_text(LANG, 'wiki:0', 3)
         set_text(LANG, 'wiki:1', 'WIKI')
         set_text(LANG, 'wiki:2', '[#]|[sasha] wiki[lang] <text>: manda un estratto da [lang] Wikipedia.')
-        set_text(LANG, 'wiki:2', '[#]|[sasha] wiki[lang] search <text>: manda gli articoli di [lang] Wikipedia.')
+        set_text(LANG, 'wiki:3', '[#]|[sasha] wiki[lang] search <text>: manda gli articoli di [lang] Wikipedia.')
 
         if matches[1]:lower() == 'install' then
             return 'ℹ️¸ L\'italiano è stato installato come lingua del bot.'
