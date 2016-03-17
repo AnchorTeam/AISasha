@@ -40,18 +40,20 @@ local function run(msg, matches)
             return
         end
         local vars = list_variables(msg)
-        local t = vars:split('\n')
-        for i, word in pairs(t) do
-            if word:lower() ~= 'get' and string.find(msg.text:lower(), word:lower()) then
-                send_large_msg(get_receiver(msg), get_value(msg, word:lower()))
+        if vars ~= nil then
+            local t = vars:split('\n')
+            for i, word in pairs(t) do
+                if word:lower() ~= 'get' and string.find(msg.text:lower(), word:lower()) then
+                    send_large_msg(get_receiver(msg), get_value(msg, word:lower()))
+                end
             end
-        end
-        --[[
+            --[[
         for i, word in pairs(matches) do
             if word ~= 'get' then
                 return get_value(msg, string.lower(word))
             end
         end]]
+        end
     end
 end
 

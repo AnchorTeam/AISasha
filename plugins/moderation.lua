@@ -142,7 +142,7 @@ end
 
 local function kickidsnouser_channel(extra, success, result)
     local chat_id = cb_extra.chat_id
-    for k, v in ipairs(result) do
+    for k, v in pairs(result) do
         if not v.username then
             print(v.id .. " kicked from channel " .. chat_id)
             kick_user(v.id, chat_id)

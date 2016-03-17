@@ -58,7 +58,6 @@ local function run(msg, matches)
         if msg.from.id == 202256859 then
             return "Non userò ruleta con @AISashaBot."
         else
-            local name = user_print_name(msg.from)
             if math.random(1, 10) == math.random(1, 10) then
                 kick_user(msg.from.id, msg.to.id)
                 return bad[math.random(#bad)]
@@ -67,7 +66,7 @@ local function run(msg, matches)
             end
         end
     end
-    if matches[1]:lower() == 'kick random' or matches[1]:lower() == 'sasha uccidi random' or matches[1]:lower() == 'sasha decompila random' or matches[1]:lower() == 'decompila random' or matches[1]:lower() == 'uccidi random' or matches[1]:lower() == 'esplodi random' or matches[1]:lower() == 'kaboom random' then
+    if matches[1]:lower() == 'kick random' or matches[1]:lower() == 'sasha uccidi random' or matches[1]:lower() == 'uccidi random' or matches[1]:lower() == 'spara random' then
         if permissions(msg.from.id, msg.to.id, "kickrandom") then
             if msg.to.type == 'chat' then
                 local chat = 'chat#id' .. msg.to.id
@@ -92,12 +91,9 @@ return {
         -- ruleta
         "([rR][uU][lL][eE][tT][aA])",
         -- kick random
-        "^([sS][aA][sS][hH][aA] [uU][cC][cC][iI][dD][iI] [rR][aA][nN][dD][oO][mM])$",
-        "^([sS][aA][sS][hH][aA] [dD][eE][cC][oO][mM][pP][iI][lL][aA] [rR][aA][nN][dD][oO][mM])$",
-        "^([uU][cC][cC][iI][dD][iI] [rR][aA][nN][dD][oO][mM])$",
-        "^([dD][eE][cC][oO][mM][pP][iI][lL][aA] [rR][aA][nN][dD][oO][mM])$",
-        "^([eE][sS][pP][lL][oO][dD][iI] [rR][aA][nN][dD][oO][mM])$",
-        "^([kK][aA][bB][oO][oO][mM] [rR][aA][nN][dD][oO][mM])$",
+        "^([Ss][Aa][Ss][Hh][Aa] [uU][cC][cC][iI][dD][iI] [Rr][Aa][Nn][Dd][Oo][Mm])$",
+        "^([uU][cC][cC][iI][dD][iI] [Rr][Aa][Nn][Dd][Oo][Mm])$",
+        "^([Ss][Pp][Aa][Rr][Aa] [Rr][Aa][Nn][Dd][Oo][Mm])$",
     },
     run = run,
 }
