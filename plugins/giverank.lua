@@ -298,9 +298,9 @@ local function run(msg, matches)
                     local member = string.gsub(matches[3], '@', '')
                     resolve_username(member, guest_by_username, { chat_id = chat_id, member = member, chat_type = chat_type })
                 end
+            else
+                return '🚫 ' .. lang_text(msg.to.id, 'require_sudo')
             end
-        else
-            return '🚫 ' .. lang_text(msg.to.id, 'require_sudo')
         end
     elseif matches[1]:lower() == 'admins' or matches[1]:lower() == 'adminslist' or matches[1]:lower() == 'adminlist' or matches[1]:lower() == 'sasha lista admin' or matches[1]:lower() == 'lista admin' then
         if permissions(user_id, chat_id, "admins") then
