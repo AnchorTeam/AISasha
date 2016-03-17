@@ -245,7 +245,7 @@ local function run(msg, matches)
     user_id = msg.from.id
     chat_id = msg.to.id
     if matches[1]:lower() == 'rank' or matches[1]:lower() == 'promote' or matches[1]:lower() == 'sasha promuovi' or matches[1]:lower() == 'promuovi' then
-        if (matches[1]:lower() == 'promote' or matches[1]:lower() == 'sasha promuovi' or matches[1]:lower() == 'promuovi') and matches[2]:lower() == 'admin' then
+        if (matches[1]:lower() == 'rank' or matches[1]:lower() == 'promote' or matches[1]:lower() == 'sasha promuovi' or matches[1]:lower() == 'promuovi') and matches[2]:lower() == 'admin' then
             if permissions(user_id, chat_id, "rank_admin") then
                 if msg.reply_id then
                     get_message(msg.reply_id, admin_by_reply, false)
@@ -264,7 +264,7 @@ local function run(msg, matches)
                 return '🚫 ' .. lang_text(msg.to.id, 'require_sudo')
             end
         end
-        if (matches[1]:lower() == 'promote' or matches[1]:lower() == 'sasha promuovi' or matches[1]:lower() == 'promuovi') and matches[2]:lower() == 'mod' then
+        if (matches[1]:lower() == 'rank' or matches[1]:lower() == 'promote' or matches[1]:lower() == 'sasha promuovi' or matches[1]:lower() == 'promuovi') and matches[2]:lower() == 'mod' then
             if permissions(user_id, chat_id, "rank_mod") then
                 if msg.reply_id then
                     get_message(msg.reply_id, mod_by_reply, false)
