@@ -487,7 +487,9 @@ return {
     patterns =
     {
         '#([iI][nN][sS][tT][aA][lL][lL]) (italian_lang)$',
-        '#([uU][pP][dD][aA][tT][eE]) (italian_lang)$'
+        '#([uU][pP][dD][aA][tT][eE]) (italian_lang)$',
+        '#([iI][nN][sS][tT][aA][lL][lL]) ([Ii][Tt])$',
+        '#([uU][pP][dD][aA][tT][eE]) ([Ii][Tt])$',
     },
     run = run
 }
