@@ -12,33 +12,28 @@
     end
     if hash then
         redis:hset(hash, name, value)
-        return "Salvato " .. name .. " => " .. value
+        return name .. " salvato"
     end
 end
 
 local function run(msg, matches)
     local name = string.sub(matches[1]:lower(), 1, 50)
     local value = string.sub(matches[2], 1, 1000)
-    local text = 'Stai forse cercando di fregarmi?'
+
     if permissions(msg.from.id, msg.to.id, "set") then
-        text = set_value(msg, name, value)
+        return set_value(msg, name, value)
+    else
+        return '🚫 ' .. lang_text(msg.to.id, 'require_mod')
     end
-    return text
 end
 
 return {
-    description = "SET\nℹ️Plugin per salvare dei valori.",
-    usage =
-    {
-        "🖊([!/]set|[sasha] setta) <var_name> <text>",
-        "ℹ️Sasha salva <text> come risposta a <var_name>.",
-    },
     patterns =
     {
-        "#[sS][eE][tT] ([^%s]+) (.+)$",
+        "#[Ss][Ee][Tt] ([^%s]+) (.+)$",
         -- set
-        "[sS][aA][sS][hH][aA] [sS][eE][tT][tT][aA] ([^%s]+) (.+)$",
-        "[sS][eE][tT][tT][aA] ([^%s]+) (.+)$",
+        "[Ss][Aa][Ss][Hh][Aa] [Ss][Ee][Tt][Tt][Aa] ([^%s]+) (.+)$",
+        "[Ss][Ee][Tt][Tt][Aa] ([^%s]+) (.+)$",
     },
     run = run
 }

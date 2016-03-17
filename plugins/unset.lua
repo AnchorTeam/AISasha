@@ -19,26 +19,20 @@ end
 local function run(msg, matches)
     local name = string.sub(matches[1], 1, 50)
 
-    local text = 'Stai forse cercando di fregarmi?'
     if permissions(msg.from.id, msg.to.id, "unset") then
-        text = unset_var(msg, name:lower())
+        return unset_var(msg, name:lower())
+    else
+        return '🚫 ' .. lang_text(msg.to.id, 'require_mod')
     end
-    return text
 end
 
 return {
-    description = "UNSET\nℹ️Plugin per l'eliminazione dei valori salvati.",
-    usage =
-    {
-        "🖊([!/]unset|[sasha] unsetta) <var_name>",
-        "ℹ️Sasha elimina <var_name>.",
-    },
     patterns =
     {
-        "^#[uU][nN][sS][eE][tT] ([^%s]+)$",
+        "^#[Uu][Nn][Ss][Ee][Tt] ([^%s]+)$",
         -- unset
-        "^[sS][aA][sS][hH][aA] [uU][nN][sS][eE][tT][tT][aA] ([^%s]+)$",
-        "^[uU][nN][sS][eE][tT][tT][aA] ([^%s]+)$",
+        "^[Ss][Aa][Ss][Hh][Aa] [Uu][Nn][Ss][Ee][Tt][Tt][Aa] ([^%s]+)$",
+        "^[Uu][Nn][Ss][Ee][Tt][Tt][Aa] ([^%s]+)$",
     },
     run = run
 }

@@ -5,12 +5,12 @@ local sudos = {
     "lang_install",
     "set_lang",
     "tosupergroup",
-    "gban_installer"
 }
 local admins = {
     "rank_mod",
     "gban",
     "ungban",
+    "gbanlist",
     "setrules",
     "setphoto",
     "creategroup",
@@ -19,17 +19,20 @@ local admins = {
     "setlink",
     "rank_guest",
     "description",
-    "export_gban"
 }
 local mods = {
     "whois",
     "kick",
+    "kickrandom",
+    "kicknouser",
     "add",
     "ban",
     "unban",
+    "banlist",
     "lockmember",
     "mute",
     "unmute",
+    "mutelist",
     "admins",
     "members",
     "mods",
@@ -43,7 +46,8 @@ local mods = {
     "rules",
     "pre_process",
     "set",
-    "unset"
+    "unset",
+    "tagall",
 }
 
 local function get_tag(plugin_tag)

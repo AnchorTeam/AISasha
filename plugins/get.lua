@@ -56,21 +56,13 @@ local function run(msg, matches)
 end
 
 return {
-    description = "GET\nℹ️Plugin per mostrare i valori salvati.",
-    usage =
-    {
-        "🖊[/!]getlist|sasha lista|get",
-        "ℹ️Sasha mostra una lista delle variabili settate.",
-        "🖊[[/!]get] <var_name>",
-        "ℹ️Sasha mostra il valore di <var_name>.",
-    },
     patterns =
     {
-        "^#([gG][eE][tT][lL][iI][sS][tT])$",
-        "^#([gG][eE][tT]) ([^%s]+)$",
+        "^#([Gg][Ee][Tt][Ll][Ii][Ss][Tt])$",
+        "^#([Gg][Ee][Tt]) ([^%s]+)$",
         -- getlist
-        "^#([gG][eE][tT])$",
-        "^([sS][aA][sS][hH][aA] [lL][iI][sS][tT][aA])$",
+        "^#([Gg][Ee][Tt])$",
+        "^([Ss][Aa][Ss][Hh][Aa] [Ll][Ii][Ss][Tt][Aa])$",
         -- get
         "^([^%s]+) (.+)$",
         "^([^%s]+)$",

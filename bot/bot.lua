@@ -187,11 +187,6 @@ function save_config()
     print('saved config into ./data/config.lua')
 end
 
-function save_gbans()
-    serialize_to_file(_gbans, './data/gbans.lua')
-    print('saved gban into ./data/gbans.lua')
-end
-
 -- Returns the config from config.lua file.
 -- If file doesn't exist, create it.
 function load_config()

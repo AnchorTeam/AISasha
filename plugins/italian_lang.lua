@@ -261,15 +261,6 @@ local function run(msg, matches)
         set_text(LANG, 'commands:1', '#commands: mostra la descrizione di ogni plugin.')
         set_text(LANG, 'commands:2', '#commands [plugin]: descrizione del plugin.')
 
-        -- export_gban.lua --
-        set_text(LANG, 'export_gban:0', 2)
-        set_text(LANG, 'export_gban:1', '#gbans installer: invia un file lua per condividere la tua lista di ban globali ed inviarla in un altro gruppo.')
-        set_text(LANG, 'export_gban:2', '#gbans list: invia un archivio con la lista degli utenti bannati globalmente.')
-
-        -- gban_installer.lua --
-        set_text(LANG, 'gban_installer:0', 1)
-        set_text(LANG, 'gban_installer:1', '#install gbans: aggiungi una lista di utenti al db redis dei ban globali.')
-
         -- giverank.lua --
         set_text(LANG, 'giverank:0', 9)
         set_text(LANG, 'giverank:1', '#rank admin (risposta): promuovi ad amministratore tramite risposta.')
@@ -288,32 +279,27 @@ local function run(msg, matches)
         set_text(LANG, 'id:2', '#ids chat: mostra gli ID dei membri del gruppo.')
         set_text(LANG, 'id:3', '#ids channel: mostra gli ID dei membri del supergruppo.')
         set_text(LANG, 'id:4', '#id <username>: mostra l\'ID dell\'utente in questa chat.')
-        set_text(LANG, 'id:5', '#whois <id_utente>/<username>: mostra lo username.')
+        set_text(LANG, 'id:5', '#whois <id_utente>|<username>: mostra lo username.')
         set_text(LANG, 'id:6', '#whois (risposta): mostra l\'ID.')
 
         -- moderation.lua --
-        set_text(LANG, 'moderation:0', 18)
-        set_text(LANG, 'moderation:1', '#add: rispondendo ad un messaggio, l\'utente verrà aggiunto al gruppo/supergruppo.')
-        set_text(LANG, 'moderation:2', '#add <id>/<username>: aggiungi un utente tramite ID/username al gruppo/supergruppo.')
-        set_text(LANG, 'moderation:3', '#kick: rispondendo ad un messaggio, l\'utente verrà rimosso dal gruppo/supergruppo.')
-        set_text(LANG, 'moderation:4', '#kick <id>/<username>: rimuovi un utente tramite ID/username al gruppo/supergruppo.')
-        set_text(LANG, 'moderation:5', '#kickme: fatti rimuovere.')
-        set_text(LANG, 'moderation:6', '#ban: rispondendo ad un messaggio, l\'utente verrà bannato dal gruppo/supergruppo.')
-        set_text(LANG, 'moderation:7', '#ban <id>/<username>: banna un utente tramite ID/username al gruppo/supergruppo.')
-        set_text(LANG, 'moderation:8', '#unban: rispondendo ad un messaggio, l\'utente verrà unbannato dal gruppo/supergruppo.')
-        set_text(LANG, 'moderation:9', '#unban <id>/<username>: unbanna un utente tramite ID/username al gruppo/supergruppo.')
-        set_text(LANG, 'moderation:10', '#gban: rispondendo ad un messaggio, l\'utente verrà bannato globalmente da ogni gruppo/supergruppo.')
-        set_text(LANG, 'moderation:11', '#gban <id>/<username>: banna globalmente un utente tramite ID/username da ogni gruppo/supergruppo.')
-        set_text(LANG, 'moderation:12', '#ungban: rispondendo ad un messaggio, l\'utente verrà unbannato globalmente.')
-        set_text(LANG, 'moderation:13', '#ungban <id>/<username>: unbanna globalmente un utente tramite ID/username.')
-        set_text(LANG, 'moderation:14', '#mute: rispondendo ad un messaggio, l\'utente verrà silenziato nel corrente supergruppo, ed ogni suo messaggio verrà cancellato.')
-        set_text(LANG, 'moderation:15', '#mute <id>/<username>: l\'utente verrà silenziato tramite ID/username nel corrente supergruppo, ed ogni suo messaggio verrà cancellato.')
-        set_text(LANG, 'moderation:16', '#unmute: rispondendo ad un messaggio, l\'utente verrà desilenziato nel corrente supergruppo.')
-        set_text(LANG, 'moderation:17', '#unmute <id>/<username>: l\'utente verrà desilenziato tramite ID/username nel corrente supergruppo.')
-        set_text(LANG, 'moderation:18', '#rem: rispondendo ad un messaggio, questo verrà rimosso.')
+        set_text(LANG, 'moderation:0', 13)
+        set_text(LANG, 'moderation:1', '(#kickme|[sasha] uccidimi): fatti rimuovere.')
+        set_text(LANG, 'moderation:2', '(#mute|[sasha] togli voce) <id>|<username>|<reply>: silenzia un utente nel supergruppo, ogni suo messaggio verrà cancellato.')
+        set_text(LANG, 'moderation:3', '(#unmute|[sasha] dai voce) <id>|<username>|<reply>: desilenzia un utente nel supergruppo.')
+        set_text(LANG, 'moderation:4', '(#mutelist|[sasha] lista muti): manda la lista degli utenti muti.')
+        set_text(LANG, 'moderation:5', '#kick|[sasha] uccidi|spara <id>|<username>|<reply>: rimuovi un utente dal gruppo/supergruppo.')
+        set_text(LANG, 'moderation:6', '(#kicknouser|[sasha] uccidi nouser|spara nouser): rimuovi tutti gli utenti senza username dal gruppo/supergruppo.')
+        set_text(LANG, 'moderation:7', '#ban|[sasha] banna|[sasha] decompila|esplodi|kaboom <id>|<username>|<reply>: banna un utente dal gruppo/supergruppo.')
+        set_text(LANG, 'moderation:8', '(#unban|[sasha] sbanna|[sasha] [ri]compila) <id>|<username>|<reply>: unbanna un utente dal gruppo/supergruppo.')
+        set_text(LANG, 'moderation:9', '(#banlist|[sasha] lista ban): manda la lista degli utenti bannati.')
+        set_text(LANG, 'moderation:10', '(#gban|[sasha] superbanna) <id>|<username>|<reply>: banna globalmente un utente da ogni gruppo/supergruppo.')
+        set_text(LANG, 'moderation:11', '(#ungban|[sasha] supersbanna) <id>|<username>|<reply>: unbanna globalmente un utente da ogni gruppo/supergruppo.')
+        set_text(LANG, 'moderation:12', '(#gbanlist|[sasha] lista superban): manda la lista degli utenti bannati globalmente.')
+        set_text(LANG, 'moderation:13', '(#add|#invite|[sasha] invita|[sasha] resuscita) <id>|<username>|<reply>: aggiungi un utente al gruppo/supergruppo.')
 
         -- settings.lua --
-        set_text(LANG, 'settings:0', 19)
+        set_text(LANG, 'settings:0', 20)
         set_text(LANG, 'settings:1', '#settings stickers enable/disable: quando abilitato, ogni sticker verrà rimosso.')
         set_text(LANG, 'settings:2', '#settings links enable/disable: quando abilitato, ogni link verrà rimosso.')
         set_text(LANG, 'settings:3', '#settings arabic enable/disabl: quando abilitato, ogni messaggio contenente caratteri arabi e persiani verrà rimosso.')
@@ -333,6 +319,7 @@ local function run(msg, matches)
         set_text(LANG, 'settings:17', '#lang <language (en, es...)>: cambia l\'idioma del bot.')
         set_text(LANG, 'settings:18', '#setlink <link>: salva il link del gruppo.')
         set_text(LANG, 'settings:19', '#link: mostra il link del gruppo.')
+        set_text(LANG, 'settings:20', '#rem <reply>: rimuove un messaggio.')
 
         -- plugins.lua --
         set_text(LANG, 'plugins:0', 4)
@@ -344,23 +331,48 @@ local function run(msg, matches)
         -- version.lua --
         set_text(LANG, 'version:0', 1)
         set_text(LANG, 'version:1', '#version: mostra la versione del bot.')
-        
+
         -- rules.lua --
         set_text(LANG, 'rules:0', 1)
         set_text(LANG, 'rules:1', '#rules: mostra le regole della chat.')
 
         -- get.lua --
         set_text(LANG, 'get:0', 2)
-        set_text(LANG, 'get:1', '#get|#getlist|sasha lista: mostra la lista delel variabili settate.')
+        set_text(LANG, 'get:1', '(#get|#getlist|sasha lista): mostra la lista delel variabili settate.')
         set_text(LANG, 'get:2', '[#get] <var_name>: manda il testo associato a <var_name>.')
 
         -- set.lua --
         set_text(LANG, 'set:0', 1)
-        set_text(LANG, 'set:1', '#set|[sasha] setta <var_name> <text>: setta <text> in risposta a <var_name>.')
+        set_text(LANG, 'set:1', '(#set|[sasha] setta) <var_name> <text>: setta <text> in risposta a <var_name>.')
 
         -- unset.lua --
         set_text(LANG, 'unset:0', 1)
-        set_text(LANG, 'unset:1', '#unset|[sasha] unsetta <var_name>: elimina <var_name>.')
+        set_text(LANG, 'unset:1', '(#unset|[sasha] unsetta) <var_name>: elimina <var_name>.')
+
+        -- tagall.lua --
+        set_text(LANG, 'tagall:0', 1)
+        set_text(LANG, 'tagall:1', '(#tagall|sasha tagga tutti) <text>: tagga tutti gli utenti con username del gruppo/supergruppo.')
+
+        -- shout.lua --
+        set_text(LANG, 'shout:0', 1)
+        set_text(LANG, 'shout:1', '([#]shout|[sasha] grida|[sasha] urla) <text>: "urla" <text>.')
+
+        -- ruleta.lua --
+        set_text(LANG, 'ruleta:0', 2)
+        set_text(LANG, 'ruleta:1', '[#]ruleta: estrae un numero casuale tra 0 e 10, se è uguale rimuove l\'utente dal gruppo/supergruppo.')
+        set_text(LANG, 'ruleta:2', '#kick|[sasha] uccidi|[sasha] decompila|esplodi|kaboom random: sceglie un utente a caso e lo rimuove dal gruppo supergruppo.')
+
+        -- feedback.lua --
+        set_text(LANG, 'feedback:0', 1)
+        set_text(LANG, 'feedback:1', '[#]feedback: invia un feedback al creatore del bot.')
+
+        -- echo.lua --
+        set_text(LANG, 'echo:0', 1)
+        set_text(LANG, 'echo:1', '(#echo|sasha ripeti) <text>: ripete <text>.')
+
+        -- dogify.lua --
+        set_text(LANG, 'dogify:0', 1)
+        set_text(LANG, 'dogify:1', '(#dogify|[sasha] doge) <your/words/with/slashes>: Crea un\'immagine col doge e le parole specificate')
 
         if matches[1]:lower() == 'install' then
             return 'ℹ️¸ L\'italiano è stato installato come lingua del bot.'
