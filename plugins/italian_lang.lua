@@ -317,7 +317,7 @@ local function run(msg, matches)
 
         -- moderation.lua --
         set_text(LANG, 'moderation:0', 14)
-        set_text(LANG, 'MODERATION:1', 'MODERATION')
+        set_text(LANG, 'moderation:1', 'MODERATION')
         set_text(LANG, 'moderation:2', '(#kickme|[sasha] uccidimi): fatti rimuovere.')
         set_text(LANG, 'moderation:3', '(#mute|[sasha] togli voce) <id>|<username>|<reply>: silenzia un utente nel supergruppo, ogni suo messaggio verrà cancellato.')
         set_text(LANG, 'moderation:4', '(#unmute|[sasha] dai voce) <id>|<username>|<reply>: desilenzia un utente nel supergruppo.')
