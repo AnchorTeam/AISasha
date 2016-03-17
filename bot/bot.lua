@@ -226,8 +226,8 @@ function create_config()
         {
             "bot",
             "commands",
+            "italian_lang",
             "english_lang",
-            "export_gban",
             "giverank",
             "id",
             "moderation",
@@ -235,7 +235,6 @@ function create_config()
             "settings",
             "spam",
             "version",
-            "italian_lang",
             "arabic"
         },
         sudo_users = { 41400331 },

@@ -40,8 +40,8 @@ do
         local text = 'ℹ️ ' .. lang_text(to_id, 'plugins') .. ':\n'
         local psum = 0
         for k, v in pairs(plugins_names()) do
-            --  ✅ enabled, ❎ disabled
-            local status = '❎'
+            --  ✅ enabled, ❌ disabled
+            local status = '❌'
             psum = psum + 1
             pact = 0
             -- Check if is enabled
@@ -58,7 +58,7 @@ do
             end
         end
         local text = text .. '\n🔢 ' .. psum .. ' ' .. lang_text(to_id, 'installedPlugins') .. '\n✅ '
-        .. pact .. ' ' .. lang_text(to_id, 'pEnabled') .. '\n❎ ' .. psum - pact .. ' ' .. lang_text(to_id, 'pDisabled') .. ''
+        .. pact .. ' ' .. lang_text(to_id, 'pEnabled') .. '\n❌ ' .. psum - pact .. ' ' .. lang_text(to_id, 'pDisabled') .. ''
         return text
     end
 
@@ -84,14 +84,14 @@ do
             -- Reload the plugins
             return reload_plugins()
         else
-            return 'ℹ️ ' .. lang_text(to_id, 'notExist:1') .. ' ' .. plugin_name .. ' ' .. lang_text(to_id, 'notExist:2')
+            return '⚠️ ' .. lang_text(to_id, 'notExist:1') .. ' ' .. plugin_name .. ' ' .. lang_text(to_id, 'notExist:2')
         end
     end
 
     local function disable_plugin(name, chat)
         -- Check if plugins exists
         if not plugin_exists(name) then
-            return 'ℹ️ ' .. lang_text(to_id, 'notExist:1') .. ' ' .. name .. ' ' .. lang_text(to_id, 'notExist:2')
+            return '⚠️ ' .. lang_text(to_id, 'notExist:1') .. ' ' .. name .. ' ' .. lang_text(to_id, 'notExist:2')
         end
         local k = plugin_enabled(name)
         -- Check if plugin is enabled
@@ -106,7 +106,7 @@ do
 
     local function disable_plugin_on_chat(receiver, plugin)
         if not plugin_exists(plugin) then
-            return 'ℹ️ ' .. lang_text(to_id, 'pNotExists')
+            return '⚠️ ' .. lang_text(to_id, 'pNotExists')
         end
 
         if not _config.disabled_plugin_on_chat then

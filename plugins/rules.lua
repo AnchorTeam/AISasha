@@ -49,14 +49,14 @@ end
 
 local function run(msg, matches)
 
-    if matches[1]:lower() == 'rules' or matches[1]:lower() 'sasha regole' then
+    if matches[1]:lower() == 'rules' or matches[1]:lower() == 'sasha regole' then
         return ret_rules_channel(msg)
-    elseif matches[1]:lower() == 'setrules' or matches[1]:lower() 'sasha imposta regole' then
+    elseif matches[1]:lower() == 'setrules' or matches[1]:lower() == 'sasha imposta regole' then
         if permissions(msg.from.id, msg.to.id, 'rules') then
             set_rules_channel(msg, matches[2])
             return 'ℹ️ ' .. lang_text(msg.to.id, 'setRules')
         end
-    elseif matches[1]:lower() == 'remrules' or matches[1]:lower() 'sasha rimuovi regole' then
+    elseif matches[1]:lower() == 'remrules' or matches[1]:lower() == 'sasha rimuovi regole' then
         if permissions(msg.from.id, msg.to.id, 'rules') then
             del_rules_channel(msg.to.id)
             return 'ℹ️ ' .. lang_text(msg.to.id, 'remRules')
