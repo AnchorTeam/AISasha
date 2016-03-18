@@ -256,7 +256,6 @@ local function run(msg, matches)
                     vardump(msg)
                     text = text ..
                     '\nNome supergruppo: ' .. msg.to.print_name:gsub("_", " ") ..
-                    '\nMembri: ' .. msg.to.members_num ..
                     '\nId: ' .. math.abs(msg.to.id)
                     return text
                 end
