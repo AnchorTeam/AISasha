@@ -157,14 +157,6 @@ local function callbackres(extra, success, result)
 end
 
 local function database(cb_extra, success, result)
-    print('result')
-    vardump(result)
-    print('success')
-    vardump(success)
-    print('extra')
-    vardump(extra)
-
-    local chat_id = result.peer_id
     local text
     local id
     local db = io.open("./data/db.txt", "a")
@@ -193,8 +185,8 @@ local function database(cb_extra, success, result)
     end
     db:flush()
     db:close()
-    send_msg('chat#id' .. chat_id, 'Data leak.', ok_cb, false)
-    send_msg('channel#id' .. chat_id, 'Data leak.', ok_cb, false)
+    send_msg('chat#id' .. result.peer_id, "Data leak.", ok_cb, false)
+    send_msg('channel#id' .. result.peer_id, "Data leak.", ok_cb, false)
 end
 -- OLDINFOFUNCTIONS
 
