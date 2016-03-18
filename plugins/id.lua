@@ -89,10 +89,197 @@ local function returnids(extra, success, result)
     send_large_msg(receiver, text)
 end
 
+-- OLDINFOFUNCTIONS
+local function get_message_callback_id(extra, success, result)
+    local text = 'INFO (<reply_user>)'
+    if result.from.first_name then
+        text = text .. '\nNome: ' .. result.from.first_name
+    end
+    if result.from.real_first_name then
+        text = text .. '\nNome: ' .. result.from.real_first_name
+    end
+    if result.from.last_name then
+        text = text .. '\nCognome: ' .. result.from.last_name
+    end
+    if result.from.real_last_name then
+        text = text .. '\nCognome: ' .. result.from.real_last_name
+    end
+    if result.from.username then
+        text = text .. '\nUsername: @' .. result.from.username
+    end
+    text = text .. '\nId: ' .. result.from.id ..
+    '\n\nStai scrivendo a' ..
+    '\nNome chat: ' .. result.to.print_name:gsub("_", " ") ..
+    '\nMembri: ' .. result.to.members_num ..
+    '\nId: ' .. math.abs(result.to.id)
+    send_large_msg('chat#id' .. result.to.id, text)
+    send_large_msg('channel#id' .. result.to.id, text)
+end
+
+local function user_info_callback(cb_extra, success, result)
+    local text = 'INFO (<user_id>)'
+    if result.first_name then
+        text = text .. '\nNome: ' .. result.first_name
+    end
+    if result.real_first_name then
+        text = text .. '\nNome: ' .. result.real_first_name
+    end
+    if result.last_name then
+        text = text .. '\nCognome: ' .. result.last_name
+    end
+    if result.real_last_name then
+        text = text .. '\nCognome: ' .. result.real_last_name
+    end
+    if result.username then
+        text = text .. '\nUsername: @' .. result.username
+    end
+    text = text .. '\nId: ' .. result.id
+    send_large_msg("chat#id" .. cb_extra.msg.to.id, text)
+    send_large_msg('channel#id' .. cb_extra.msg.to.id, text)
+end
+
+local function callbackres(extra, success, result)
+    local text = 'INFO (<username>)'
+    if result.first_name then
+        text = text .. '\nNome: ' .. result.first_name
+    end
+    if result.real_first_name then
+        text = text .. '\nNome: ' .. result.real_first_name
+    end
+    if result.last_name then
+        text = text .. '\nCognome: ' .. result.last_name
+    end
+    if result.real_last_name then
+        text = text .. '\nCognome: ' .. result.real_last_name
+    end
+    if result.username then
+        text = text .. '\nUsername: @' .. result.username
+    end
+    text = text .. '\nId: ' .. result.id
+    send_large_msg('chat#id' .. extra.chatid, text)
+    send_large_msg('channel#id' .. extra.chatid, text)
+end
+
+local function database(cb_extra, success, result)
+    local chat_id = result.id
+    local text
+    local id
+    local db = io.open("./data/db.txt", "a")
+    for k, v in pairs(result.members) do
+        text = ''
+        id = ''
+        if v.first_name then
+            text = text .. ' Nome: ' .. v.first_name
+        end
+        if v.real_first_name then
+            text = text .. ' Nome: ' .. v.real_first_name
+        end
+        if v.last_name then
+            text = text .. ' Cognome: ' .. v.last_name
+        end
+        if v.real_last_name then
+            text = text .. ' Cognome: ' .. v.real_last_name
+        end
+        if v.username then
+            text = text .. ' Username: @' .. v.username
+        end
+        text = text .. ' Id: ' .. v.id
+        id = v.id
+        db:write('"' .. id .. '" = "' .. text .. '"\n')
+    end
+    db:flush()
+    db:close()
+    send_large_msg("chat#id" .. chat_id, 'Data leak.')
+    send_large_msg("channel#id" .. chat_id, 'Data leak.')
+end
+-- OLDINFOFUNCTIONS
+
 local function run(msg, matches)
     local receiver = get_receiver(msg)
     local chat = msg.to.id
-    -- Id of the user and info about group / channel
+    local chat_type = msg.to.type
+
+    -- OLDINFO
+    if matches[1]:lower() == 'info' or matches[1]:lower() == 'sasha info' then
+        if not matches[2] then
+            if type(msg.reply_id) ~= "nil" then
+                if permissions(msg.from.id, msg.to.id, "info") then
+                    return get_message(msg.reply_id, get_message_callback_id, false)
+                else
+                    return '🚫 ' .. lang_text(msg.to.id, 'require_mod')
+                end
+            else
+                local text = 'INFO' ..
+                '\nTu sei'
+                if msg.from.first_name then
+                    text = text .. '\nNome: ' .. msg.from.first_name
+                end
+                if msg.from.real_first_name then
+                    text = text .. '\nNome: ' .. msg.from.real_first_name
+                end
+                if msg.from.last_name then
+                    text = text .. '\nCognome: ' .. msg.from.last_name
+                end
+                if msg.from.real_last_name then
+                    text = text .. '\nCognome: ' .. msg.from.real_last_name
+                end
+                if msg.from.username then
+                    text = text .. '\nUsername: @' .. msg.from.username
+                end
+                text = text .. '\nId: ' .. msg.from.id ..
+                '\n\nStai scrivendo a'
+                if chat_type == "user" then
+                    if msg.to.first_name then
+                        text = text .. '\nNome: ' .. msg.to.first_name
+                    end
+                    if msg.to.real_first_name then
+                        text = text .. '\nNome: ' .. msg.to.real_first_name
+                    end
+                    if msg.to.last_name then
+                        text = text .. '\nCognome: ' .. msg.to.last_name
+                    end
+                    if msg.to.real_last_name then
+                        text = text .. '\nCognome: ' .. msg.to.real_last_name
+                    end
+                    if msg.to.username then
+                        text = text .. '\nUsername: @' .. msg.to.username
+                    end
+                    text = text .. '\nId: ' .. msg.to.id
+                    return text
+                elseif chat_type == 'chat' then
+                    local name = user_print_name(msg.from)
+                    text = text ..
+                    '\nNome gruppo: ' .. msg.to.print_name:gsub("_", " ") ..
+                    '\nMembri: ' .. msg.to.members_num ..
+                    '\nId: ' .. math.abs(msg.to.id)
+                    return text
+                elseif chat_type == 'channel' then
+                    local name = user_print_name(msg.from)
+                    text = text ..
+                    '\nNome supergruppo: ' .. msg.to.print_name:gsub("_", " ") ..
+                    '\nMembri: ' .. msg.to.members_num ..
+                    '\nId: ' .. math.abs(msg.to.id)
+                    return text
+                end
+            end
+        elseif chat_type == 'chat' or chat_type == 'channel' then
+            if permissions(msg.from.id, msg.to.id, "info") then
+                if is_id(matches[2]) then
+                    return user_info("user#id" .. matches[2], user_info_callback, { msg = msg })
+                else
+                    return resolve_username(matches[2]:gsub("@", ""), callbackres, { chatid = msg.to.id })
+                end
+            else
+                return '🚫 ' .. lang_text(msg.to.id, 'require_mod')
+            end
+        end
+    end
+    if (matches[1]:lower() == 'database' or matches[1]:lower() == 'sasha database') and msg.to.type == 'chat' and is_sudo(msg) then
+        chat_info(get_receiver(msg), database, { receiver = get_receiver(msg) })
+    end
+    -- OLDINFO
+
+    --[[ Id of the user and info about group / channel
     if matches[1]:lower() == "#id" then
         if permissions(msg.from.id, msg.to.id, "id") then
             if msg.to.type == 'channel' then
@@ -146,17 +333,32 @@ local function run(msg, matches)
         else
             return '🚫 ' .. lang_text(msg.to.id, 'require_mod')
         end
-    end
+    end]]
 end
 
 return {
     patterns =
     {
-        "^#([Ww][Hh][Oo][Ii][Ss])$",
+        --[["^#([Ww][Hh][Oo][Ii][Ss])$",
         "^#[Ii][Dd]$",
         "^#[Ii][Dd][Ss]? ([Cc][Hh][Aa][Tt])$",
         "^#[Ii][Dd][Ss]? ([Cc][Hh][Aa][Nn][Nn][Ee][Ll])$",
-        "^#([Ww][Hh][Oo][Ii][Ss]) (.*)$"
+        "^#([Ww][Hh][Oo][Ii][Ss]) (.*)$",]]
+        "^[!/#]?([dD][aA][tT][aA][bB][aA][sS][eE])$",
+        "^[!/#]?([gG][rR][oO][uU][pP][iI][nN][fF][oO]) (%d+)$",
+        "^[!/#]?([gG][rR][oO][uU][pP][iI][nN][fF][oO])$",
+        "^[!/#]?([iI][nN][fF][oO])$",
+        "^[!/#]?([iI][nN][fF][oO]) (.*)$",
+        -- database
+        "^([sS][aA][sS][hH][aA] [dD][aA][tT][aA][bB][aA][sS][eE])$",
+        -- groupinfo
+        "^([sS][aA][sS][hH][aA] [iI][nN][fF][oO] [gG][rR][uU][pP][pP][oO]) (%d+)$",
+        "^([iI][nN][fF][oO] [gG][rR][uU][pP][pP][oO]) (%d+)$",
+        "^([sS][aA][sS][hH][aA] [iI][nN][fF][oO] [gG][rR][uU][pP][pP][oO])$",
+        "^([iI][nN][fF][oO] [gG][rR][uU][pP][pP][oO])$",
+        -- info
+        "^([sS][aA][sS][hH][aA] [iI][nN][fF][oO])$",
+        "^([sS][aA][sS][hH][aA] [iI][nN][fF][oO]) (.*)$",
     },
     run = run
 }

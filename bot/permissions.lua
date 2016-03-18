@@ -22,6 +22,7 @@ local admins = {
 }
 local mods = {
     "whois",
+    "info",
     "kick",
     "kickrandom",
     "kicknouser",

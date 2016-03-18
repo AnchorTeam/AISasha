@@ -580,7 +580,7 @@ local function run(msg, matches)
         if permissions(msg.from.id, msg.to.id, "banlist") then
             return ban_list(chat_id)
         else
-            return '🚫 ' .. lang_text(msg.to.id, 'require_admin')
+            return '🚫 ' .. lang_text(msg.to.id, 'require_mod')
         end
     elseif matches[1]:lower() == 'gban' or matches[1]:lower() == 'sasha superbanna' or matches[1]:lower() == 'superbanna' then
         if permissions(msg.from.id, msg.to.id, "gban") then
@@ -628,7 +628,7 @@ local function run(msg, matches)
                 return
             end
         else
-            return '🚫 ' .. lang_text(msg.to.id, 'require_mod')
+            return '🚫 ' .. lang_text(msg.to.id, 'require_admin')
         end
     elseif matches[1]:lower() == 'gbanlist' or matches[1]:lower() == 'sasha lista superban' or matches[1]:lower() == 'lista superban' then
         if permissions(msg.from.id, msg.to.id, "gbanlist") then
