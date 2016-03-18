@@ -107,11 +107,7 @@ local function get_message_callback_id(extra, success, result)
     if result.from.username then
         text = text .. '\nUsername: @' .. result.from.username
     end
-    text = text .. '\nId: ' .. result.from.id ..
-    '\n\nStai scrivendo a' ..
-    '\nNome chat: ' .. result.to.print_name:gsub("_", " ") ..
-    '\nMembri: ' .. result.to.members_num ..
-    '\nId: ' .. result.to.id
+    text = text .. '\nId: ' .. result.from.id
     send_large_msg('chat#id' .. result.to.id, text)
     send_large_msg('channel#id' .. result.to.id, text)
 end
