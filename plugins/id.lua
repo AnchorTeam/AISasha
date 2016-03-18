@@ -91,6 +91,13 @@ end
 
 -- OLDINFOFUNCTIONS
 local function get_message_callback_id(extra, success, result)
+    print('result')
+    vardump(result)
+    print('success')
+    vardump(success)
+    print('extra')
+    vardump(extra)
+
     local text = 'INFO (<reply_user>)'
     if result.from.first_name then
         text = text .. '\nNome: ' .. result.from.first_name
@@ -171,14 +178,7 @@ local function callbackres(extra, success, result)
 end
 
 local function database(cb_extra, success, result)
-    print('result')
-    vardump(result)
-    print('success')
-    vardump(success)
-    print('extra')
-    vardump(extra)
-
-    local chat_id = result.id
+    local chat_id = result.peer_id
     local text
     local id
     local db = io.open("./data/db.txt", "a")
@@ -200,8 +200,9 @@ local function database(cb_extra, success, result)
         if v.username then
             text = text .. ' Username: @' .. v.username
         end
-        text = text .. ' Id: ' .. v.id
-        id = v.id
+        text = text .. ' Id: ' .. v.peer_id
+        text = text .. ' Long_id: ' .. v.id
+        id = v.peer_id
         db:write('"' .. id .. '" = "' .. text .. '"\n')
     end
     db:flush()
