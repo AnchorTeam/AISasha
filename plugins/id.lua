@@ -253,6 +253,7 @@ local function run(msg, matches)
                     '\nId: ' .. math.abs(msg.to.id)
                     return text
                 elseif chat_type == 'channel' then
+                    vardump(msg)
                     text = text ..
                     '\nNome supergruppo: ' .. msg.to.print_name:gsub("_", " ") ..
                     '\nMembri: ' .. msg.to.members_num ..
