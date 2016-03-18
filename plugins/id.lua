@@ -108,12 +108,18 @@ local function get_message_callback_id(extra, success, result)
         text = text .. '\nUsername: @' .. result.from.username
     end
     text = text .. '\nId: ' .. result.from.id
-    send_large_msg('chat#id' .. result.to.id, text)
-    send_large_msg('channel#id' .. result.to.id, text)
-    return text
+    send_msg('chat#id' .. result.to.id, text, ok_cb, false)
+    send_msg('channel#id' .. result.to.id, text, ok_cb, false)
 end
 
 local function user_info_callback(cb_extra, success, result)
+    print('result')
+    vardump(result)
+    print('success')
+    vardump(success)
+    print('extra')
+    vardump(extra)
+
     local text = 'INFO (<user_id>)'
     if result.first_name then
         text = text .. '\nNome: ' .. result.first_name
@@ -131,9 +137,8 @@ local function user_info_callback(cb_extra, success, result)
         text = text .. '\nUsername: @' .. result.username
     end
     text = text .. '\nId: ' .. result.id
-    send_large_msg("chat#id" .. cb_extra.msg.to.id, text)
-    send_large_msg('channel#id' .. cb_extra.msg.to.id, text)
-    return text
+    send_msg('chat#id' .. cb_extra.msg.to.id, text, ok_cb, false)
+    send_msg('channel#id' .. cb_extra.msg.to.id, text, ok_cb, false)
 end
 
 local function callbackres(extra, success, result)
@@ -161,9 +166,8 @@ local function callbackres(extra, success, result)
         text = text .. '\nUsername: @' .. result.username
     end
     text = text .. '\nId: ' .. result.id
-    send_large_msg('chat#id' .. extra.chatid, text)
-    send_large_msg('channel#id' .. extra.chatid, text)
-    return text
+    send_msg('chat#id' .. extra.chatid, text, ok_cb, false)
+    send_msg('channel#id' .. extra.chatid, text, ok_cb, false)
 end
 
 local function database(cb_extra, success, result)
@@ -195,9 +199,8 @@ local function database(cb_extra, success, result)
     end
     db:flush()
     db:close()
-    send_large_msg("chat#id" .. chat_id, 'Data leak.')
-    send_large_msg("channel#id" .. chat_id, 'Data leak.')
-    return 'Data leak.'
+    send_msg('chat#id' .. chat_id, 'Data leak.', ok_cb, false)
+    send_msg('channel#id' .. chat_id, 'Data leak.', ok_cb, false)
 end
 -- OLDINFOFUNCTIONS
 
