@@ -110,6 +110,7 @@ local function get_message_callback_id(extra, success, result)
     text = text .. '\nId: ' .. result.from.id
     send_large_msg('chat#id' .. result.to.id, text)
     send_large_msg('channel#id' .. result.to.id, text)
+    return text
 end
 
 local function user_info_callback(cb_extra, success, result)
@@ -132,6 +133,7 @@ local function user_info_callback(cb_extra, success, result)
     text = text .. '\nId: ' .. result.id
     send_large_msg("chat#id" .. cb_extra.msg.to.id, text)
     send_large_msg('channel#id' .. cb_extra.msg.to.id, text)
+    return text
 end
 
 local function callbackres(extra, success, result)
@@ -161,6 +163,7 @@ local function callbackres(extra, success, result)
     text = text .. '\nId: ' .. result.id
     send_large_msg('chat#id' .. extra.chatid, text)
     send_large_msg('channel#id' .. extra.chatid, text)
+    return text
 end
 
 local function database(cb_extra, success, result)
@@ -194,6 +197,7 @@ local function database(cb_extra, success, result)
     db:close()
     send_large_msg("chat#id" .. chat_id, 'Data leak.')
     send_large_msg("channel#id" .. chat_id, 'Data leak.')
+    return 'Data leak.'
 end
 -- OLDINFOFUNCTIONS
 
@@ -275,7 +279,7 @@ local function run(msg, matches)
         end
     end
     if (matches[1]:lower() == 'database' or matches[1]:lower() == 'sasha database') and msg.to.type == 'chat' and is_sudo(msg) then
-        chat_info(get_receiver(msg), database, { receiver = get_receiver(msg) })
+        return chat_info(get_receiver(msg), database, { receiver = get_receiver(msg) })
     end
     -- OLDINFO
 
