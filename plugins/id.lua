@@ -91,13 +91,6 @@ end
 
 -- OLDINFOFUNCTIONS
 local function get_message_callback_id(extra, success, result)
-    print('result')
-    vardump(result)
-    print('success')
-    vardump(success)
-    print('extra')
-    vardump(extra)
-
     local text = 'INFO (<reply_user>)'
     if result.from.first_name then
         text = text .. '\nNome: ' .. result.from.first_name
@@ -115,18 +108,11 @@ local function get_message_callback_id(extra, success, result)
         text = text .. '\nUsername: @' .. result.from.username
     end
     text = text .. '\nId: ' .. result.from.peer_id
-    send_msg('chat#id' .. result.to.id, text, ok_cb, false)
-    send_msg('channel#id' .. result.to.id, text, ok_cb, false)
+    send_msg('chat#id' .. result.to.peer_id, text, ok_cb, false)
+    send_msg('channel#id' .. result.to.peer_id, text, ok_cb, false)
 end
 
 local function user_info_callback(cb_extra, success, result)
-    print('result')
-    vardump(result)
-    print('success')
-    vardump(success)
-    print('extra')
-    vardump(extra)
-
     local text = 'INFO (<user_id>)'
     if result.first_name then
         text = text .. '\nNome: ' .. result.first_name
@@ -144,18 +130,11 @@ local function user_info_callback(cb_extra, success, result)
         text = text .. '\nUsername: @' .. result.username
     end
     text = text .. '\nId: ' .. result.peer_id
-    send_msg('chat#id' .. cb_extra.msg.to.id, text, ok_cb, false)
-    send_msg('channel#id' .. cb_extra.msg.to.id, text, ok_cb, false)
+    send_msg('chat#id' .. result.peer_id, text, ok_cb, false)
+    send_msg('channel#id' .. result.peer_id, text, ok_cb, false)
 end
 
 local function callbackres(extra, success, result)
-    print('result')
-    vardump(result)
-    print('success')
-    vardump(success)
-    print('extra')
-    vardump(extra)
-
     local text = 'INFO (<username>)'
     if result.first_name then
         text = text .. '\nNome: ' .. result.first_name
@@ -173,11 +152,18 @@ local function callbackres(extra, success, result)
         text = text .. '\nUsername: @' .. result.username
     end
     text = text .. '\nId: ' .. result.peer_id
-    send_msg('chat#id' .. extra.chatid, text, ok_cb, false)
-    send_msg('channel#id' .. extra.chatid, text, ok_cb, false)
+    send_msg('chat#id' .. result.peer_id, text, ok_cb, false)
+    send_msg('channel#id' .. result.peer_id, text, ok_cb, false)
 end
 
 local function database(cb_extra, success, result)
+    print('result')
+    vardump(result)
+    print('success')
+    vardump(success)
+    print('extra')
+    vardump(extra)
+
     local chat_id = result.peer_id
     local text
     local id
