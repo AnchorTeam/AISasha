@@ -107,7 +107,7 @@ local function get_message_callback_id(extra, success, result)
     if result.from.username then
         text = text .. '\nUsername: @' .. result.from.username
     end
-    text = text .. '\nId: ' .. result.from.id
+    text = text .. '\nId: ' .. result.from.peer_id
     send_msg('chat#id' .. result.to.id, text, ok_cb, false)
     send_msg('channel#id' .. result.to.id, text, ok_cb, false)
 end
@@ -136,7 +136,7 @@ local function user_info_callback(cb_extra, success, result)
     if result.username then
         text = text .. '\nUsername: @' .. result.username
     end
-    text = text .. '\nId: ' .. result.id
+    text = text .. '\nId: ' .. result.peer_id
     send_msg('chat#id' .. cb_extra.msg.to.id, text, ok_cb, false)
     send_msg('channel#id' .. cb_extra.msg.to.id, text, ok_cb, false)
 end
@@ -165,12 +165,19 @@ local function callbackres(extra, success, result)
     if result.username then
         text = text .. '\nUsername: @' .. result.username
     end
-    text = text .. '\nId: ' .. result.id
+    text = text .. '\nId: ' .. result.peer_id
     send_msg('chat#id' .. extra.chatid, text, ok_cb, false)
     send_msg('channel#id' .. extra.chatid, text, ok_cb, false)
 end
 
 local function database(cb_extra, success, result)
+    print('result')
+    vardump(result)
+    print('success')
+    vardump(success)
+    print('extra')
+    vardump(extra)
+
     local chat_id = result.id
     local text
     local id
