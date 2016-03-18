@@ -247,14 +247,12 @@ local function run(msg, matches)
                     text = text .. '\nId: ' .. msg.to.id
                     return text
                 elseif chat_type == 'chat' then
-                    local name = user_print_name(msg.from)
                     text = text ..
                     '\nNome gruppo: ' .. msg.to.print_name:gsub("_", " ") ..
                     '\nMembri: ' .. msg.to.members_num ..
                     '\nId: ' .. math.abs(msg.to.id)
                     return text
                 elseif chat_type == 'channel' then
-                    local name = user_print_name(msg.from)
                     text = text ..
                     '\nNome supergruppo: ' .. msg.to.print_name:gsub("_", " ") ..
                     '\nMembri: ' .. msg.to.members_num ..
