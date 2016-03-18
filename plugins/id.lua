@@ -139,6 +139,13 @@ local function user_info_callback(cb_extra, success, result)
 end
 
 local function callbackres(extra, success, result)
+    print('result')
+    vardump(result)
+    print('success')
+    vardump(success)
+    print('extra')
+    vardump(extra)
+
     local text = 'INFO (<username>)'
     if result.first_name then
         text = text .. '\nNome: ' .. result.first_name
@@ -253,7 +260,6 @@ local function run(msg, matches)
                     '\nId: ' .. math.abs(msg.to.id)
                     return text
                 elseif chat_type == 'channel' then
-                    vardump(msg)
                     text = text ..
                     '\nNome supergruppo: ' .. msg.to.print_name:gsub("_", " ") ..
                     '\nId: ' .. math.abs(msg.to.id)
